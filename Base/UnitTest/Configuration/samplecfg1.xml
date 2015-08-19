@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <section name="sect1">
+    <set key="k1" value="355" />
+  </section>
+  <section name="sect2">
+    <set key="k2" value="OrdinalIgnoreCase" />
+    <set key="k" value="UnitTest.Configuration.ConfigTest, UnitTest" />
+  </section>
+</config>

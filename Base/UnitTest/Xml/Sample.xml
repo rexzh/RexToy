@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Books xmlns="urn:Books" xmlns:pub="urn:Publisher">
+  <Book category="Junior" available="true">
+    <Title>Beginning XML</Title>
+    <pub:Publisher>Wrox</pub:Publisher>
+    <Pages>100</Pages>
+  </Book>
+  <Book category="Junior" available="false">
+    <Title>XML Step by Step</Title>
+    <pub:Publisher>MSPress</pub:Publisher>
+    <Pages>110</Pages>
+  </Book>  
+  <Book category="Senior" available="true">
+    <Title>Professional XML</Title>
+    <pub:Publisher>Wrox</pub:Publisher>
+    <Pages>300</Pages>
+  </Book>
+  <Book category="Senior" available="false">
+    <Title>Developing XML solutions</Title>
+    <pub:Publisher>MSPress</pub:Publisher>
+    <Pages>310</Pages>
+  </Book>
+</Books>

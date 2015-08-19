@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<logging>
+  <layout>RexToy.Logging.VStudioLayout,RexToy.Common</layout>
+  <writer>RexToy.Logging.VStudioWriter,RexToy.Common</writer>
+  <log name="RexToy.Template" level="Debug" />
+</logging>

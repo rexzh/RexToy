@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<translate>
+  <entry key="MSG_HELLO" value="Hello"/>
+  <entry key="MSG_EXIT" value="Exit"/>
+</translate>

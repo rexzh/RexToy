@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<kernal>
+  <component id="c">
+    <serviceType>UnitTest.Sample.ICalc, UnitTest</serviceType>
+    <componentType>UnitTest.Sample.SimpleCalc, UnitTest</componentType>
+    <policy>
+      <singleton />
+    </policy>
+  </component>
+
+  <component id="cMock">
+    <componentType>UnitTest.Sample.CalcMock, UnitTest</componentType>
+    <policy>
+      <activator>
+        <params>
+          <param name ="c" value="#{sdCalc}" />
+        </params>
+      </activator>
+    </policy>
+  </component>
+
+  <component id="sdCalc">
+    <serviceType>UnitTest.Sample.ICalc, UnitTest</serviceType>
+    <componentType>UnitTest.Sample.SingleDigitCalc, UnitTest</componentType>
+    <policy>
+      <singleton />
+      <factory>
+        <class>UnitTest.Sample.CalcFactory, UnitTest</class>
+        <method>Create</method>
+        <params>
+        </params>
+      </factory>
+      <setter property="Mode" value="10"/>
+    </policy>
+  </component>
+
+  <component id="dCalc">
+    <serviceType>UnitTest.Sample.ICalc, UnitTest</serviceType>
+    <componentType>UnitTest.Sample.DefaultCalc, UnitTest</componentType>
+    <policy>
+      <activator>
+        <params>
+          <param name="b" value="1" />
+        </params>
+      </activator>
+    </policy>
+  </component>
+</kernal>

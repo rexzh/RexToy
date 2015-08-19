@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<logging>
+  <layout>RexToy.Logging.NullLayout,RexToy.Common</layout>
+  <writer>RexToy.Logging.NullWriter,RexToy.Common</writer>
+  <log name="abc" level="Debug" />
+  <log name="uvw" level="Warning" />
+  <log name="opq" level="Info" />
+</logging>

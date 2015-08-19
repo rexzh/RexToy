@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A5109D12-4740-411B-A957-3396C669FD6F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RexToy</RootNamespace>
+    <AssemblyName>RexToy.Core.Extension</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RexToy.Common">
+      <HintPath>..\..\BuildTarget\RexToy.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="RexToy.Core">
+      <HintPath>..\..\BuildTarget\RexToy.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cryptography\AsymmetricCrypto.cs" />
+    <Compile Include="Cryptography\DESProvider.cs" />
+    <Compile Include="Cryptography\IAsymmetricCrypto.cs" />
+    <Compile Include="Cryptography\ISymmetricCrypto.cs" />
+    <Compile Include="Cryptography\MD5Provider.cs" />
+    <Compile Include="Cryptography\RijndaelProvider.cs" />
+    <Compile Include="Cryptography\SHA1Provider.cs" />
+    <Compile Include="Cryptography\SymmetricCrypto.cs" />
+    <Compile Include="ExpressionLanguage\ELParseException.cs" />
+    <Compile Include="ExpressionLanguage\ExceptionHelper.cs" />
+    <Compile Include="ExpressionLanguage\_Lexical\CharType.cs" />
+    <Compile Include="ExpressionLanguage\_Lexical\LexicalParser.cs" />
+    <Compile Include="ExpressionLanguage\_Lexical\ParseStatus.cs" />
+    <Compile Include="ExpressionLanguage\_Lexical\StatusMatrix.cs" />
+    <Compile Include="ExpressionLanguage\_Lexical\Tokens\Token.cs" />
+    <Compile Include="ExpressionLanguage\_Lexical\Tokens\TokenType.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\ClassDefination.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\EvalExceptionHandlingPolicy.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\ExpressionLanguageEngineConfig.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\EvalContext.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\EvalException.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\EvalSmartInvoker.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\EvalVisitor.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\ExceptionHelper.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\ExpressionLanguageEngine.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\IEvalContext.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\IEvalExceptionHandlingPolicy.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\IgnorePolicy.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\IInterpreter.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\Interpreter.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\ScriptTypeUtil.cs" />
+    <Compile Include="ExpressionLanguage\_Runtime\ThrowPolicy.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\ArrayNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\AutoIntArrayNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\ClassQualifierNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\ExpressionLanguageAST.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\HashNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\IndexerNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\MethodNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\NewNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\OperatorNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\ParamListNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\PropertyNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\RegexNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\SimpleNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\TernaryNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\AST\UnaryNode.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\SemanticParser.cs" />
+    <Compile Include="ExpressionLanguage\_Semantic\TraceVisitor.cs" />
+    <Compile Include="Json\ExceptionHelper.cs" />
+    <Compile Include="Json\JsonArray.cs" />
+    <Compile Include="Json\JsonConstant.cs" />
+    <Compile Include="Json\JsonObject.cs" />
+    <Compile Include="Json\JsonParseException.cs" />
+    <Compile Include="Json\_Converter\JsonExtension.cs" />
+    <Compile Include="Json\_Converter\JsonHelper.cs" />
+    <Compile Include="Json\_ExtendConverter\DictionaryConverter.cs" />
+    <Compile Include="Json\_ExtendConverter\EnumConverter.cs" />
+    <Compile Include="Json\_ExtendConverter\JavascriptTimeConverter.cs" />
+    <Compile Include="Json\_ExtendConverter\ExceptionHelper.cs" />
+    <Compile Include="Json\_ExtendConverter\ExtendConverter.cs" />
+    <Compile Include="Json\_ExtendConverter\ExtendConverterException.cs" />
+    <Compile Include="Json\_ExtendConverter\IExtendConverter.cs" />
+    <Compile Include="Json\_ExtendConverter\JsonExtendConverterException.cs" />
+    <Compile Include="Json\_ExtendConverter\ListConverter.cs" />
+    <Compile Include="Json\_Lexical\CharType.cs" />
+    <Compile Include="Json\_Lexical\LexicalParser.cs" />
+    <Compile Include="Json\_Lexical\ParseStatus.cs" />
+    <Compile Include="Json\_Lexical\StatusMatrix.cs" />
+    <Compile Include="Json\_Lexical\Token.cs" />
+    <Compile Include="Json\_Lexical\TokenType.cs" />
+    <Compile Include="Json\_Semantic\SemanticParser.cs" />
+    <Compile Include="L10N\L10NContext.cs" />
+    <Compile Include="L10N\ILocalization.cs" />
+    <Compile Include="L10N\Localization.cs" />
+    <Compile Include="Numeric\ExceptionHelper.cs" />
+    <Compile Include="Numeric\MeasuredNumberConverter.cs" />
+    <Compile Include="Numeric\MeasureUnit.cs" />
+    <Compile Include="Numeric\Percentage.cs" />
+    <Compile Include="Numeric\PercentageConverter.cs" />
+    <Compile Include="Numeric\UnitMismatchException.cs" />
+    <Compile Include="Numeric\MeasuredNumber.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\CLRLocator.cs" />
+    <Compile Include="Resources\ExceptionHelper.cs" />
+    <Compile Include="Resources\LocalFileSystemLocator.cs" />
+    <Compile Include="Resources\ITargetLocator.cs" />
+    <Compile Include="Resources\LocatorException.cs" />
+    <Compile Include="Resources\LocatorFactory.cs" />
+    <Compile Include="Validation\CheckPolicy.cs" />
+    <Compile Include="Validation\ExceptionHelper.cs" />
+    <Compile Include="Validation\IValidateResult.cs" />
+    <Compile Include="Validation\IValidator.cs" />
+    <Compile Include="Validation\NoErrorValidateResult.cs" />
+    <Compile Include="Validation\ValidateResult.cs" />
+    <Compile Include="Validation\ValidationException.cs" />
+    <Compile Include="Validation\Validator.cs" />
+    <Compile Include="Validation\ValidatorFactory.cs" />
+    <Compile Include="Validation\_Attributes\BaseValidateAttribute.cs" />
+    <Compile Include="Validation\_Attributes\CustomizeValidateAttribute.cs" />
+    <Compile Include="Validation\_Attributes\ExpressionLanguageValidateAttribute.cs" />
+    <Compile Include="Validation\_Attributes\NotNullValidateAttribute.cs" />
+    <Compile Include="Validation\_Attributes\RegexValidateAttribute.cs" />
+    <Compile Include="Validation\_Attributes\ValidateMethodAttribute.cs" />
+    <Compile Include="Validation\_Attributes\ValidatePropertyAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

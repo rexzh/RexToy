@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB50DAAE-F562-4D6F-A1C3-4008AD4D3E03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RexToy.ORM</RootNamespace>
+    <AssemblyName>RexToy.ORM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\RexToy.ORM.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\RexToy.ORM.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RexToy.Common">
+      <HintPath>..\..\BuildTarget\RexToy.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="RexToy.Core">
+      <HintPath>..\..\BuildTarget\RexToy.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\IDatabaseInfo.cs" />
+    <Compile Include="Dialect\_Model\AbstractDatabaseMeta.cs" />
+    <Compile Include="Dialect\_Model\IDatabaseMeta.cs" />
+    <Compile Include="Dialect\_Model\MSSql\DatabaseMeta.cs" />
+    <Compile Include="Dialect\_Model\MSSql\MetaQuery.cs" />
+    <Compile Include="Dialect\_Model\MSSql\Table.cs" />
+    <Compile Include="Dialect\_Model\OleDb\DatabaseMeta.cs" />
+    <Compile Include="Dialect\_Model\OleDb\MetaQuery.cs" />
+    <Compile Include="Dialect\_Model\Column.cs" />
+    <Compile Include="Configuration\ConfigExceptionHelper.cs" />
+    <Compile Include="Configuration\DatabaseInfo.cs" />
+    <Compile Include="Configuration\IORMConfig.cs" />
+    <Compile Include="Configuration\ORMConfig.cs" />
+    <Compile Include="Configuration\ORMConfigException.cs" />
+    <Compile Include="Configuration\XmlORMConfig.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DatabaseFactory.cs" />
+    <Compile Include="DbAccess\IDbProvider.cs" />
+    <Compile Include="DbAccess\MSSql\DbProvider.cs" />
+    <Compile Include="DbAccess\OleDb\DbProvider.cs" />
+    <Compile Include="Dialect\GenerateExceptionHelper.cs" />
+    <Compile Include="Dialect\ExpressionParseException.cs" />
+    <Compile Include="Dialect\ExtensionFunctionNames.cs" />
+    <Compile Include="Dialect\IDialectProvider.cs" />
+    <Compile Include="Dialect\IMappingSQLEmit.cs" />
+    <Compile Include="Dialect\IModelSQLEmit.cs" />
+    <Compile Include="Dialect\IQuerySQLEmit.cs" />
+    <Compile Include="Dialect\ISQLTranslator.cs" />
+    <Compile Include="Dialect\ParameterUtility.cs" />
+    <Compile Include="Dialect\ParseExceptionHelper.cs" />
+    <Compile Include="Dialect\SQLGenerateException.cs" />
+    <Compile Include="Dialect\_Common\MSSql\DialectProvider.cs" />
+    <Compile Include="Dialect\_Common\MSSql\SQLTranslator.cs" />
+    <Compile Include="Dialect\_Model\IColumn.cs" />
+    <Compile Include="Dialect\_Model\IMetaQuery.cs" />
+    <Compile Include="Dialect\_Model\MSSql\TypeMap.cs" />
+    <Compile Include="Dialect\_Common\OleDb\DialectProvider.cs" />
+    <Compile Include="Dialect\_Common\OleDb\SQLTranslator.cs" />
+    <Compile Include="Dialect\_Model\OleDb\Table.cs" />
+    <Compile Include="Dialect\_Model\OleDb\TypeMap.cs" />
+    <Compile Include="Dialect\_ExpressionTreeParser\Evaluator.cs" />
+    <Compile Include="Dialect\_ExpressionTreeParser\ExpressionExtension.cs" />
+    <Compile Include="Dialect\_ExpressionTreeParser\Nominator.cs" />
+    <Compile Include="Dialect\_ExpressionTreeParser\SubtreeEvaluator.cs" />
+    <Compile Include="Dialect\_Mapping\IMappingColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Mapping\IMappingExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Model\ITypeMap.cs" />
+    <Compile Include="Dialect\_Mapping\MSSql\MappingColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Mapping\MSSql\MappingConditionExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\MSSql\MappingSQLEmit.cs" />
+    <Compile Include="Dialect\_Mapping\OleDb\MappingColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Mapping\OleDb\MappingConditionExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\OleDb\MappingSQLEmit.cs" />
+    <Compile Include="Dialect\_Mapping\_AbstractImpl\AbstractMappingColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Mapping\_AbstractImpl\AbstractMappingConditionExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\_AbstractImpl\AbstractMappingSQLEmit.cs" />
+    <Compile Include="Dialect\_Model\IModelColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Model\MSSql\ModelColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Model\MSSql\ModelSQLEmit.cs" />
+    <Compile Include="Dialect\_Model\OleDb\ModelColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Model\OleDb\ModelSQLEmit.cs" />
+    <Compile Include="Dialect\_Model\_AbstractImpl\AbstractModelSQLEmit.cs" />
+    <Compile Include="Dialect\_Model\_AbstractImpl\AbstractModelColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Model\AbstractTable.cs" />
+    <Compile Include="Dialect\_Query\IFilterExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\IJoinExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\IOrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\IQueryColumnBuilder.cs" />
+    <Compile Include="Dialect\_Query\IQueryCriteriaVisitor.cs" />
+    <Compile Include="Dialect\_Query\IQueryOrderVisitor.cs" />
+    <Compile Include="Dialect\_Query\IQueryViewVisitor.cs" />
+    <Compile Include="Dialect\_Query\MSSql\FilterExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\MSSql\JoinExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\MSSql\OrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\MSSql\QueryColumnBuilder.cs" />
+    <Compile Include="Dialect\_Query\MSSql\QueryCriteriaVisitor.cs" />
+    <Compile Include="Dialect\_Query\MSSql\QueryOrderVisitor.cs" />
+    <Compile Include="Dialect\_Query\MSSql\QuerySQLEmit.cs" />
+    <Compile Include="Dialect\_Query\MSSql\QueryViewVisitor.cs" />
+    <Compile Include="Dialect\_Query\OleDb\FilterExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\OleDb\JoinExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\OleDb\OrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\OleDb\QueryColumnBuilder.cs" />
+    <Compile Include="Dialect\_Query\OleDb\QueryCriteriaVisitor.cs" />
+    <Compile Include="Dialect\_Query\OleDb\QueryOrderVisitor.cs" />
+    <Compile Include="Dialect\_Query\OleDb\QuerySQLEmit.cs" />
+    <Compile Include="Dialect\_Query\OleDb\QueryViewVisitor.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractFilterExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractJoinExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractOrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractQueryColumnBuilder.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractQueryCriteriaVisitor.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractQueryOrderVisitor.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractQuerySQLEmit.cs" />
+    <Compile Include="Dialect\_Query\_AbstractImpl\AbstractQueryViewVisitor.cs" />
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="Dialect\_Model\ITable.cs" />
+    <Compile Include="MappingInfo\DbPath.cs" />
+    <Compile Include="MappingInfo\MappingInfoExceptionHelper.cs" />
+    <Compile Include="MappingInfo\IObjectMapInfo.cs" />
+    <Compile Include="MappingInfo\IObjectMapInfoCache.cs" />
+    <Compile Include="MappingInfo\IPropertyMapInfo.cs" />
+    <Compile Include="MappingInfo\MappingInfoException.cs" />
+    <Compile Include="MappingInfo\MappingInfoLoader.cs" />
+    <Compile Include="MappingInfo\ObjectMapInfo.cs" />
+    <Compile Include="MappingInfo\ObjectMapInfoCache.cs" />
+    <Compile Include="MappingInfo\PrimaryKeyGenerate.cs" />
+    <Compile Include="MappingInfo\PrimaryKeyStatus.cs" />
+    <Compile Include="MappingInfo\PropertyMapInfo.cs" />
+    <Compile Include="MappingInfo\_Attributes\AttributeMapLoader.cs" />
+    <Compile Include="MappingInfo\_Attributes\ColumnAttribute.cs" />
+    <Compile Include="MappingInfo\_Attributes\TableAttribute.cs" />
+    <Compile Include="MappingInfo\_Xml\XmlMapLoader.cs" />
+    <Compile Include="QueryModel\Criteria.cs" />
+    <Compile Include="QueryModel\CriteriaType.cs" />
+    <Compile Include="QueryModel\IQuery.cs" />
+    <Compile Include="QueryModel\JoinType.cs" />
+    <Compile Include="QueryModel\LogicType.cs" />
+    <Compile Include="QueryModel\Order.cs" />
+    <Compile Include="QueryModel\OrderCollection.cs" />
+    <Compile Include="QueryModel\OrderType.cs" />
+    <Compile Include="QueryModel\Query.cs" />
+    <Compile Include="QueryModel\View.cs" />
+    <Compile Include="QueryModel\ViewGeneric.cs" />
+    <Compile Include="QueryModel\ViewType.cs" />
+    <Compile Include="Row.cs" />
+    <Compile Include="RowSet.cs" />
+    <Compile Include="Session\CoreFactory.cs" />
+    <Compile Include="Session\CoreFactoryException.cs" />
+    <Compile Include="Session\CoreFactoryExceptionHelper.cs" />
+    <Compile Include="Session\DataRowExtension.cs" />
+    <Compile Include="Session\DataTableExtension.cs" />
+    <Compile Include="Session\Dialect.cs" />
+    <Compile Include="Session\EntityManager.cs" />
+    <Compile Include="Session\EntityQuery.cs" />
+    <Compile Include="Session\ORMExceptionHelper.cs" />
+    <Compile Include="Session\IEntityManager.cs" />
+    <Compile Include="Session\IEntityQuery.cs" />
+    <Compile Include="Session\INativeSQL.cs" />
+    <Compile Include="Session\ISQLExecutor.cs" />
+    <Compile Include="Session\NativeSQL.cs" />
+    <Compile Include="Session\ORMException.cs" />
+    <Compile Include="Session\SQLExecutor.cs" />
+    <Compile Include="_Extensions\CriteriaExtension.cs" />
+    <Compile Include="ExceptionHelper.cs" />
+    <Compile Include="ISession.cs" />
+    <Compile Include="ITransaction.cs" />
+    <Compile Include="_Extensions\OrderExtension.cs" />
+    <Compile Include="_Extensions\PredicateExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Extensions\QueryExtension.cs" />
+    <Compile Include="_Extensions\QueryFunctionExtension.cs" />
+    <Compile Include="SessionException.cs" />
+    <Compile Include="SimpleSession.cs" />
+    <Compile Include="SessionFactory.cs" />
+    <Compile Include="_Extensions\ViewExtension.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

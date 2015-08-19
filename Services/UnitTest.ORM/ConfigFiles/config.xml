@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <section name="orm">
+    <set key="database" value="source;dest;std;" />
+    <set key="object-map" value="map.xml;ora_map.xml" />
+    
+    <set key="source.dialectId" value="MSSql" />
+    <set key="source.cnnstr" value="server=lcp-svr;database=Test;uid=sa;pwd=123" />
+
+    <set key="dest.dialectId" value="Oracle" />
+    <set key="dest.cnnstr" value="User ID=Test;Data Source=XE;Password=test" />    
+    <set key="dest.provider" value="RexToy.ORM.DbAccess.Oracle.DbProvider,RexToy.ORM.Oracle" />
+    <set key="dest.dialectProvider" value="RexToy.ORM.Dialect.Oracle.DialectProvider,RexToy.ORM.Oracle" />
+
+    <set key="std.dialectId" value="OleDb" />
+    <set key="std.cnnstr" value="Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=\test.mdb;Mode=Share Deny None;" />    
+  </section>
+</config>

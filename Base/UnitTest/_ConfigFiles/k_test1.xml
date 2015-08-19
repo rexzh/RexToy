@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<kernal>
+  <component id="c" lifecycleManagement="true">
+    <serviceType>UnitTest.Sample.ICalc, UnitTest</serviceType>
+    <componentType>UnitTest.Sample.SimpleCalc, UnitTest</componentType>
+  </component>
+
+  <component id="cMock" lifecycleManagement="true">
+    <componentType>UnitTest.Sample.CalcMock, UnitTest</componentType>
+    <policy>
+      <activator teardown="true">
+        <params>
+          <param name="c" />
+        </params>
+      </activator>
+    </policy>
+  </component>
+</kernal>

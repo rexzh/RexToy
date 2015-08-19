@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42DDAD29-49CB-4681-944D-5E84AD63BFDA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnitTest.Template</RootNamespace>
+    <AssemblyName>UnitTest.Template</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RexToy.Common, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BuildTarget\RexToy.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="RexToy.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BuildTarget\RexToy.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NodeTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LexicalParseTest.cs" />
+    <Compile Include="TemplateEngineTest.cs" />
+    <Compile Include="Text\StringTemplateTest.cs" />
+    <Compile Include="_Parser\LexicalParser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RexToy.Core.Extension\RexToy.Core.Extension.csproj">
+      <Project>{A5109D12-4740-411B-A957-3396C669FD6F}</Project>
+      <Name>RexToy.Core.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RexToy.Template\RexToy.Template.csproj">
+      <Project>{CBD320DD-27B4-4E7E-A4BA-76D188C61302}</Project>
+      <Name>RexToy.Template</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_ConfigFiles\config.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\log.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Examples\ClassDef.tpl" />
+    <None Include="Examples\ForWithContinue.tpl" />
+    <None Include="Examples\ForWithBreak.tpl" />
+    <None Include="Examples\Title.tpl" />
+    <None Include="Examples\SimpleContent.tpl" />
+    <None Include="Examples\Foot.tpl" />
+    <None Include="Examples\Head.tpl" />
+    <None Include="Examples\For.tpl" />
+    <None Include="Examples\If.tpl" />
+    <None Include="Examples\IfElse.tpl" />
+    <None Include="Examples\Simple.tpl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)_ConfigFiles\*.xml $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

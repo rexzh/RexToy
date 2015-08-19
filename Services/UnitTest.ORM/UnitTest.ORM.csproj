@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A9C3B809-AB57-4BFE-BAC6-229F0349801A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnitTest.ORM</RootNamespace>
+    <AssemblyName>UnitTest.ORM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\UnitTest.ORM.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\UnitTest.ORM.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\External\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RexToy.Common">
+      <HintPath>..\..\BuildTarget\RexToy.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="RexToy.Core">
+      <HintPath>..\..\BuildTarget\RexToy.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IntegrateDB\MetaQueryTest.cs" />
+    <Compile Include="IntegrateDB\OracleMappingTest.cs" />
+    <Compile Include="OracleModelTest.cs" />
+    <Compile Include="MSSQLModelTest.cs" />
+    <Compile Include="IntegrateDB\MSSQLMappingTest.cs" />
+    <Compile Include="IntegrateDB\OleDBMappingTest.cs" />
+    <Compile Include="OleDbModelTest.cs" />
+    <Compile Include="OracleQueryTest.cs" />
+    <Compile Include="OleDbQueryTest.cs" />
+    <Compile Include="MSSQLQueryTest.cs" />
+    <Compile Include="OleDBMappingTest.cs" />
+    <Compile Include="MapInfoTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleEntity\ContactInfo.cs" />
+    <Compile Include="SampleEntity\Course.cs" />
+    <Compile Include="SampleEntity\CoursePerson.cs" />
+    <Compile Include="OracleMappingTest.cs" />
+    <Compile Include="SampleEntity\MSSql\ContactInfo.cs" />
+    <Compile Include="SampleEntity\MSSql\Course.cs" />
+    <Compile Include="SampleEntity\MSSql\CoursePerson.cs" />
+    <Compile Include="SampleEntity\MSSql\Employee.cs" />
+    <Compile Include="SampleEntity\MSSql\Lifecycle.cs" />
+    <Compile Include="SampleEntity\MSSql\Order.cs" />
+    <Compile Include="SampleEntity\MSSql\Person.cs" />
+    <Compile Include="SampleEntity\MSSql\Schema.cs" />
+    <Compile Include="SampleEntity\MSSql\Week.cs" />
+    <Compile Include="SampleEntity\OleDb\ContactInfo.cs" />
+    <Compile Include="SampleEntity\OleDb\Course.cs" />
+    <Compile Include="SampleEntity\OleDb\CoursePerson.cs" />
+    <Compile Include="SampleEntity\OleDb\Employee.cs" />
+    <Compile Include="SampleEntity\OleDb\Lifecycle.cs" />
+    <Compile Include="SampleEntity\OleDb\Order.cs" />
+    <Compile Include="SampleEntity\OleDb\Person.cs" />
+    <Compile Include="SampleEntity\OleDb\Schema.cs" />
+    <Compile Include="SampleEntity\OleDb\Week.cs" />
+    <Compile Include="SampleEntity\Oracle\ContactInfo.cs" />
+    <Compile Include="SampleEntity\Oracle\Course.cs" />
+    <Compile Include="SampleEntity\Oracle\CoursePerson.cs" />
+    <Compile Include="SampleEntity\Oracle\Employee.cs" />
+    <Compile Include="SampleEntity\Oracle\Lifecycle.cs" />
+    <Compile Include="SampleEntity\Oracle\Order.cs" />
+    <Compile Include="SampleEntity\Oracle\Person.cs" />
+    <Compile Include="SampleEntity\Oracle\Schema.cs" />
+    <Compile Include="SampleEntity\Oracle\Week.cs" />
+    <Compile Include="SampleEntity\Order.cs" />
+    <Compile Include="SampleEntity\Person.cs" />
+    <Compile Include="SampleEntity\PhoneType.cs" />
+    <Compile Include="MSSQLMappingTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RexToy.ORM.Oracle\RexToy.ORM.Oracle.csproj">
+      <Project>{E3DE8EED-1D12-4487-834D-F01D12BBA5AB}</Project>
+      <Name>RexToy.ORM.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RexToy.ORM\RexToy.ORM.csproj">
+      <Project>{BB50DAAE-F562-4D6F-A1C3-4008AD4D3E03}</Project>
+      <Name>RexToy.ORM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConfigFiles\config.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ConfigFiles\ora_map.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ConfigFiles\log.xml" />
+    <Content Include="ConfigFiles\map.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConfigFiles\sqlnet.ora" />
+    <None Include="ConfigFiles\tnsnames.ora" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)ConfigFiles\*.xml $(TargetDir)
+copy $(ProjectDir)ConfigFiles\*.ora $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

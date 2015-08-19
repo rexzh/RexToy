@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <section name="kernal">
+    <set key="policy.myTest" value="UnitTest.Sample.TestPolicy, UnitTest" />
+
+    <set key="kernal.main" value=".\k_main.xml" />
+    <set key="kernal.test1" value=".\k_test1.xml" />
+    <set key="kernal.test2" value=".\k_test2.xml" />
+  </section>
+
+  <section name="aop">
+    <set key="sink-factory" value="RexToy.AOP.Services.ServiceSinkFactory, RexToy.Core" />
+    <set key="aop-config" value=".\aop.xml" />
+  </section>
+</config>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{776F9BB6-7099-47D2-85D9-1A25BD087B01}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnitTest</RootNamespace>
+    <AssemblyName>UnitTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AOP\AOPTest.cs" />
+    <Compile Include="AOP\AspectSyntaxTest.cs" />
+    <Compile Include="AOP\ConfigTest.cs" />
+    <Compile Include="AOP\MyAfterAdvisor.cs" />
+    <Compile Include="AOP\MyAroundAdvisor.cs" />
+    <Compile Include="AOP\MyBeforeAdvisor.cs" />
+    <Compile Include="AOP\_Component\MyComponent.cs" />
+    <Compile Include="AOP\_Component\MyDerivedComponent.cs" />
+    <Compile Include="AttributeExtTest.cs" />
+    <Compile Include="ClrClassPathTest.cs" />
+    <Compile Include="Collections\MultiMapTest.cs" />
+    <Compile Include="Collections\ReadOnlyDictTest.cs" />
+    <Compile Include="Collections\ReadOnlyListTest.cs" />
+    <Compile Include="ArrayExtTest.cs" />
+    <Compile Include="Configuration\ConfigTest.cs" />
+    <Compile Include="Copy\CopyTest.cs" />
+    <Compile Include="DesignPattern\NotifyChangePropertyTest.cs" />
+    <Compile Include="IoC\ComponentInfoStoreTest.cs" />
+    <Compile Include="IoC\KernalTest1.cs" />
+    <Compile Include="IoC\KernalTest2.cs" />
+    <Compile Include="IoC\KernalTestMain.cs" />
+    <Compile Include="Logging\LogConfigTest.cs" />
+    <Compile Include="Logging\LogContextTest.cs" />
+    <Compile Include="Logging\LoggerFactoryTest.cs" />
+    <Compile Include="Logging\LogTest.cs" />
+    <Compile Include="Logging\_Sample\SampleLayout.cs" />
+    <Compile Include="Logging\_Sample\SampleLogConfig.cs" />
+    <Compile Include="Logging\_Sample\SampleWriter.cs" />
+    <Compile Include="RuntimeTest.cs" />
+    <Compile Include="Sample\DefaultCalc.cs" />
+    <Compile Include="Sample\PersonObserver.cs" />
+    <Compile Include="EnumTest.cs" />
+    <Compile Include="IgnoreCaseStringDictTest.cs" />
+    <Compile Include="LoadTest.cs" />
+    <Compile Include="MethodExtTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReflectorTest.cs" />
+    <Compile Include="Sample\Person.cs" />
+    <Compile Include="Sample\ReflectSampleClass1.cs" />
+    <Compile Include="Sample\ReflectSampleClass2.cs" />
+    <Compile Include="Sample\SampleClassForAttrTest.cs" />
+    <Compile Include="Sample\SampleClassForMethodTest.cs" />
+    <Compile Include="Sample\SampleEnum.cs" />
+    <Compile Include="Sample\SampleFuncOverload.cs" />
+    <Compile Include="Sample\SampleStruct.cs" />
+    <Compile Include="Sample\SampleType1.cs" />
+    <Compile Include="Sample\SampleType2.cs" />
+    <Compile Include="Sample\SampleType3.cs" />
+    <Compile Include="DesignPattern\SingletonTest.cs" />
+    <Compile Include="Sample\CalcFactory.cs" />
+    <Compile Include="Sample\CalcMock.cs" />
+    <Compile Include="Sample\ComponentA.cs" />
+    <Compile Include="Sample\ComponentB.cs" />
+    <Compile Include="Sample\ICalc.cs" />
+    <Compile Include="Sample\SimpleCalc.cs" />
+    <Compile Include="Sample\SingleDigitCalc.cs" />
+    <Compile Include="Sample\TestPolicy.cs" />
+    <Compile Include="AOP\ServiceTest.cs" />
+    <Compile Include="StringBuilderExtTest.cs" />
+    <Compile Include="StringExtTest.cs" />
+    <Compile Include="TypeCastTest.cs" />
+    <Compile Include="TypeTest.cs" />
+    <Compile Include="Xml\SampleEnumCategory.cs" />
+    <Compile Include="Xml\XmlTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RexToy.Common\RexToy.Common.csproj">
+      <Project>{78E4E64C-1A9A-4B98-8AAA-BB5E5BB9BCF6}</Project>
+      <Name>RexToy.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RexToy.Core\RexToy.Core.csproj">
+      <Project>{2C083129-3199-46A3-B3D6-7317C2D5735E}</Project>
+      <Name>RexToy.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\samplecfg1.xml" />
+    <Content Include="Logging\log.xml" />
+    <Content Include="Logging\log1.xml" />
+    <Content Include="Logging\log2.xml" />
+    <Content Include="Xml\Sample.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\aop.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\config.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\k_main.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\k_test1.xml" />
+    <Content Include="_ConfigFiles\k_test2.xml" />
+    <Content Include="_ConfigFiles\log.xml" />
+    <None Include="Configuration\sample_config.ini" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)_ConfigFiles\*.xml $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3421CB96-723D-4089-9BB5-FCFFE1B5FDF6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnitTest.Extension</RootNamespace>
+    <AssemblyName>UnitTest.Extension</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RexToy.Common">
+      <HintPath>..\..\BuildTarget\RexToy.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cryptography\AsymTest.cs" />
+    <Compile Include="Cryptography\SymCodecTest.cs" />
+    <Compile Include="ExpressionLanguage\ELEngineTest.cs" />
+    <Compile Include="ExpressionLanguage\EvalSmartInvokeAdvanceTest.cs" />
+    <Compile Include="ExpressionLanguage\EvalSmartInvokeTest.cs" />
+    <Compile Include="ExpressionLanguage\EvalTest.cs" />
+    <Compile Include="ExpressionLanguage\ExpressionsForTest.cs" />
+    <Compile Include="ExpressionLanguage\LexicalTest.cs" />
+    <Compile Include="ExpressionLanguage\SemanticTest.cs" />
+    <Compile Include="ExpressionLanguage\_Parser\LexicalParser.cs" />
+    <Compile Include="ExpressionLanguage\_Parser\SemanticParser.cs" />
+    <Compile Include="ExpressionLanguage\_SampleClass\Eval.cs" />
+    <Compile Include="ExpressionLanguage\_SampleClass\M.cs" />
+    <Compile Include="ExpressionLanguage\_SampleClass\SampleClassForMethodTest.cs" />
+    <Compile Include="ExpressionLanguage\_SampleClass\SampleFuncOverload.cs" />
+    <Compile Include="Json\ConvertTest.cs" />
+    <Compile Include="Json\ExtendConvertTest.cs" />
+    <Compile Include="Json\ReaderTest.cs" />
+    <Compile Include="Json\RenderTest.cs" />
+    <Compile Include="Json\WriterTest.cs" />
+    <Compile Include="Json\_SampleClass\Chat.cs" />
+    <Compile Include="Json\_SampleClass\Employee.cs" />
+    <Compile Include="Json\_SampleClass\Empty.cs" />
+    <Compile Include="Json\_SampleClass\Fibo.cs" />
+    <Compile Include="Json\_SampleClass\Point.cs" />
+    <Compile Include="Json\_SampleClass\Position.cs" />
+    <Compile Include="Json\_SampleClass\Rectangle.cs" />
+    <Compile Include="Json\_SampleClass\Triangle.cs" />
+    <Compile Include="L10N\L10NTest.cs" />
+    <Compile Include="Numeric\PercentageTest.cs" />
+    <Compile Include="Numeric\UnitTest.cs" />
+    <Compile Include="Numeric\ValueTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\LocatorTest.cs" />
+    <Compile Include="Validation\ValidateSample1.cs" />
+    <Compile Include="Validation\ValidateSample2.cs" />
+    <Compile Include="Validation\ValidateTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RexToy.Core.Extension\RexToy.Core.Extension.csproj">
+      <Project>{A5109D12-4740-411B-A957-3396C669FD6F}</Project>
+      <Name>RexToy.Core.Extension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="res.txt" />
+    <Content Include="_ConfigFiles\l10n\dictionary_zh-CN.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\l10n\dictionary_en-US.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\log.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="_ConfigFiles\res.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)_ConfigFiles\*.xml $(TargetDir)
+xcopy $(ProjectDir)_ConfigFiles\l10n\*.xml $(TargetDir)l10n\ /Y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

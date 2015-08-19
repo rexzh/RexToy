@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<aop>
+  <advisor name="myBefore">
+    <class>UnitTest.AOP.MyBeforeAdvisor,UnitTest</class>
+  </advisor>
+
+  <advisor name="myAfter">
+    <class>UnitTest.AOP.MyAfterAdvisor,UnitTest</class>
+  </advisor>
+
+  <advisor name="myAround">
+    <class>UnitTest.AOP.MyAroundAdvisor,UnitTest</class>
+  </advisor>
+
+  <join-point>
+    <position>before</position>
+    <!--[access-modifier] return-type full-class-name.method-name(param-list)-->
+    <pattern>public * ..*Component.Run(..)</pattern>
+    <execute>myBefore</execute>
+  </join-point>
+
+  <join-point>
+    <position>around</position>
+    <pattern>* * ..*.AddCount(..)</pattern>
+    <execute>myAround</execute>
+  </join-point>
+
+  <join-point>
+    <position>around</position>
+    <pattern>* void UnitTest.AOP.MyComponent+.Reset(..)</pattern>
+    <execute>myAround</execute>
+  </join-point>
+
+  <join-point>
+    <position>after</position>
+    <pattern>* Int32 ..*.AddOne(Int32)</pattern>
+    <execute>myAfter</execute>
+  </join-point>
+</aop>

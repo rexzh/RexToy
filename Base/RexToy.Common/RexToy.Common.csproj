@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{78E4E64C-1A9A-4B98-8AAA-BB5E5BB9BCF6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RexToy</RootNamespace>
+    <AssemblyName>RexToy.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\ICache.cs" />
+    <Compile Include="Collections\IMultiMap.cs" />
+    <Compile Include="Collections\LazyLoadDictionary.cs" />
+    <Compile Include="Collections\MultiMap.cs" />
+    <Compile Include="Collections\NoCache.cs" />
+    <Compile Include="Collections\StringKeyDictionary.cs" />
+    <Compile Include="Compiler\Lexical\LexicalParseEventArgs.cs" />
+    <Compile Include="Compiler\Lexical\LexicalParser.cs" />
+    <Compile Include="Compiler\Lexical\StatusMatrixBase.cs" />
+    <Compile Include="Compiler\Lexical\Token.cs" />
+    <Compile Include="Compiler\Semantic\AbstractSyntaxTree.cs" />
+    <Compile Include="Compiler\Semantic\Node.cs" />
+    <Compile Include="Compiler\Semantic\Node_1.cs" />
+    <Compile Include="Compiler\Semantic\Node_2.cs" />
+    <Compile Include="Compiler\Semantic\Node_3.cs" />
+    <Compile Include="Compiler\Semantic\Node_N.cs" />
+    <Compile Include="Compiler\Semantic\SemanticParser.cs" />
+    <Compile Include="Copy\CopyException.cs" />
+    <Compile Include="Copy\CopyOptions.cs" />
+    <Compile Include="Copy\DictionaryExtension.cs" />
+    <Compile Include="Copy\ExceptionHelper.cs" />
+    <Compile Include="Copy\ObjectExtension.cs" />
+    <Compile Include="DesignPattern\DisposableBase.cs" />
+    <Compile Include="DesignPattern\ICommand.cs" />
+    <Compile Include="DesignPattern\NotifyPropertyChangeBase.cs" />
+    <Compile Include="Logging\ConfigCache.cs" />
+    <Compile Include="Logging\ExceptionHelper.cs" />
+    <Compile Include="Logging\ILayout.cs" />
+    <Compile Include="Logging\ILog.cs" />
+    <Compile Include="Logging\ILogConfig.cs" />
+    <Compile Include="Logging\ILoggerFactory.cs" />
+    <Compile Include="Logging\IWriter.cs" />
+    <Compile Include="Logging\LogConfigException.cs" />
+    <Compile Include="Logging\LogContext.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\LoggerFactory.cs" />
+    <Compile Include="Logging\Logger_Write.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\XmlLogConfig.cs" />
+    <Compile Include="Logging\_Implement\ConsoleLayout.cs" />
+    <Compile Include="Logging\_Implement\ConsoleWriter.cs" />
+    <Compile Include="Logging\_Implement\NullLayout.cs" />
+    <Compile Include="Logging\_Implement\NullWriter.cs" />
+    <Compile Include="Logging\_Implement\VStudioLayout.cs" />
+    <Compile Include="Logging\_Implement\VStudioWriter.cs" />
+    <Compile Include="Text\LinedTextFile.cs" />
+    <Compile Include="Xml\ExceptionHelper.cs" />
+    <Compile Include="Xml\XAccessor.cs" />
+    <Compile Include="Xml\XAccessor_Get.cs" />
+    <Compile Include="Xml\XDoc.cs" />
+    <Compile Include="Xml\XmlAccessException.cs" />
+    <Compile Include="Xml\XmlNodeNotFoundException.cs" />
+    <Compile Include="_Refelect\AttributeExtension.cs" />
+    <Compile Include="_Refelect\ClrClassPath.cs" />
+    <Compile Include="_Refelect\ISmartInvoker.cs" />
+    <Compile Include="_Refelect\MethodExtension.cs" />
+    <Compile Include="_Refelect\SmartInvoker.cs" />
+    <Compile Include="DesignPattern\Singleton.cs" />
+    <Compile Include="DesignPattern\Visitable.cs" />
+    <Compile Include="DesignPattern\VisitorBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Utility\ArrayExtension.cs" />
+    <Compile Include="_Utility\Assertion.cs" />
+    <Compile Include="_Utility\AssertionException.cs" />
+    <Compile Include="_Refelect\IReflector.cs" />
+    <Compile Include="_Refelect\IReflectPolicy.cs" />
+    <Compile Include="_Refelect\Reflector.cs" />
+    <Compile Include="_Refelect\ReflectorException.cs" />
+    <Compile Include="_Refelect\ReflectorPolicy.cs" />
+    <Compile Include="_Refelect\EnumEx.cs" />
+    <Compile Include="_Refelect\Reflector_Static.cs" />
+    <Compile Include="_Refelect\ThrowHelper.cs" />
+    <Compile Include="_Refelect\TypeCast.cs" />
+    <Compile Include="_Refelect\TypeExtension.cs" />
+    <Compile Include="_Utility\Debug.cs" />
+    <Compile Include="_Utility\LocalFilePath.cs" />
+    <Compile Include="_Utility\Namespace.cs" />
+    <Compile Include="_Utility\PrefixedName.cs" />
+    <Compile Include="_Utility\Runtime.cs" />
+    <Compile Include="_Utility\StringBuilderExtension.cs" />
+    <Compile Include="_Utility\StringExtension.cs" />
+    <Compile Include="_Utility\StringPair.cs" />
+    <Compile Include="_Utility\ExceptionExtension.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
