@@ -41,26 +41,16 @@ namespace RexToy.WebService
                 var segments = path.Substring(b.Length).Split(Const.PATH_DELIMITER, StringSplitOptions.RemoveEmptyEntries);
                 if (segments.Length == 0)
                 {
-                    this.CompleteRequest(app, ServiceResponse.NotImplemented);
+                    ServiceResponse.NotImplemented.CompleteRequest(app);
                     return;
                 }
                 
-                this.CompleteRequest(app, ServiceCache.Instance.Dispatch(req));
+                ServiceCache.Instance.Dispatch(app).CompleteRequest(app);
             }
             else
             {
                 _log.Debug("Skip path: [{0}]", path);
             }
-        }
-
-        private void CompleteRequest(HttpApplication app, ServiceResponse svcResponse)
-        {
-            var resp = app.Response;
-            resp.ContentType = "application/json; charset=utf-8";
-            resp.StatusCode = svcResponse.HttpStatus;
-            resp.Write(svcResponse.Json);
-            resp.Flush();
-            app.CompleteRequest();
         }
 
         /*

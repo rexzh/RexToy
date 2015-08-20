@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RexToy.WebService
 {
-    class RouteMatchResult
+    public class RouteMatchResult
     {
         public bool Match;
         public Dictionary<string, string> Captured;

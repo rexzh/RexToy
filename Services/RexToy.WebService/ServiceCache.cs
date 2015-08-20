@@ -4,6 +4,7 @@ using System.Web;
 using System.Reflection;
 using System.Diagnostics;
 
+using RexToy.Collections;
 using RexToy.Configuration;
 using RexToy.WebService.Configuration;
 
@@ -14,8 +15,10 @@ namespace RexToy.WebService
         public static ServiceCache Instance = new ServiceCache();
 
         private Dictionary<RouteAttribute, MethodInfo> _dict;
+        private LazyLoadDictionary<Type, object> _instanceCache;
         private ServiceCache()
         {
+            _instanceCache = new InstanceCache();
             _dict = new Dictionary<RouteAttribute, MethodInfo>();
             foreach (var a in WebServiceConfig.WebServiceConfiguration.Assemblies)
             {
@@ -34,44 +37,47 @@ namespace RexToy.WebService
             }
         }
 
-        [Conditional("DEBUG")]
-        private void Check(HttpRequest req)
+        public ServiceResponse Dispatch(HttpApplication app)
         {
-            List<RouteAttribute> match = new List<RouteAttribute>();
-            List<RouteAttribute> urlMatch = new List<RouteAttribute>();
+            HttpRequest req = app.Request;
+            string path = req.Path.RemoveBegin(WebServiceConfig.WebServiceConfiguration.BaseUrl);
+            bool urlMatch = false;
             foreach (var kvp in _dict)
             {
-                if (kvp.Key.Match(req.Path).Match)
+                var result = kvp.Key.MatchPath(path);
+                if (result.Match)
                 {
-                    if (kvp.Key.WebMethod == req.HttpMethod)
-                        match.Add(kvp.Key);
+                    if (req.HttpMethod == kvp.Key.WebMethod)
+                    {
+                        var method = kvp.Value;
+                        var argInfos = method.GetParameters();
+                        object[] args = new object[method.GetParameters().Length];
+                        for (int i = 0; i < args.Length; i++)
+                        {
+                            //TODO:param attribute
+                            var value = result.Captured[argInfos[i].Name];
+                            args[i] = Convert.ChangeType(value, argInfos[i].ParameterType);
+                        }
+                        object obj = method.Invoke(_instanceCache[method.ReflectedType], args);
+                        if (method.ReturnType != typeof(void) && !(obj is string))
+                        {
+                            return ServiceResponse.NotCorrectImplemented;
+                        }
+
+                        ServiceResponse res = new ServiceResponse(200, obj as string);
+                        return res;
+                    }
                     else
-                        urlMatch.Add(kvp.Key);
+                    {
+                        urlMatch = true;
+                    }
                 }
-            }
 
-            if (match.Count > 1)
-            {
-                //TODO:There is conflict
             }
-            if (match.Count == 0 && urlMatch.Count > 0)
-            {
-                //TODO:Method not allowed
-            }
-        }
-
-        public ServiceResponse Dispatch(HttpRequest req)
-        {
-            foreach (var kvp in _dict)
-            {
-                var result = kvp.Key.Match(req.Path);
-                if (result.Match && req.HttpMethod == kvp.Key.WebMethod)
-                {
-                    //TODO:Invoke
-                    //result.Captured
-                }
-            }
-            return ServiceResponse.NotImplemented;
+            if (urlMatch)
+                return ServiceResponse.MethodNotAllow;
+            else
+                return ServiceResponse.NotImplemented;
         }
     }
 }

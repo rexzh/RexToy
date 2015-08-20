@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RexToy.WebService
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple =false)]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class RouteAttribute : Attribute
     {
         private bool _strict;
@@ -32,6 +32,7 @@ namespace RexToy.WebService
                 if (_segments[i].StartsWith(':'))
                 {
                     _requireCapture[i] = true;
+                    _segments[i] = _segments[i].Substring(1);
                 }
                 else
                 {
@@ -43,7 +44,7 @@ namespace RexToy.WebService
             }
         }
 
-        internal RouteMatchResult Match(string path)
+        public RouteMatchResult MatchPath(string path)
         {
             string[] vals = path.Split(Const.PATH_DELIMITER, StringSplitOptions.RemoveEmptyEntries);
             if (vals.Length != _segments.Length)

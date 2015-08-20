@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 using System.Threading.Tasks;
 
 namespace RexToy.WebService
@@ -23,5 +23,16 @@ namespace RexToy.WebService
         public static readonly ServiceResponse OKWithEmptyBody = new ServiceResponse(200, "");
         public static readonly ServiceResponse BadRequest = new ServiceResponse(400, "{\"message\": \"bad reuqest\"}");
         public static readonly ServiceResponse NotImplemented = new ServiceResponse(400, "{\"message\": \"not implemented\"}");
+        public static readonly ServiceResponse NotCorrectImplemented = new ServiceResponse(500, "{\"message\": \"not return json\"}");
+
+        public void CompleteRequest(HttpApplication app)
+        {
+            var resp = app.Response;
+            resp.ContentType = "application/json; charset=utf-8";
+            resp.StatusCode = this.HttpStatus;
+            resp.Write(this.Json);
+            resp.Flush();
+            app.CompleteRequest();
+        }
     }
 }

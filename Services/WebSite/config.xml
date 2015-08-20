@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <section name="restful">
+    <set key="baseurl" value="/svc/" />
+    <set key="assembly" value="WebSite.dll" />
+  </section>
+</config>
