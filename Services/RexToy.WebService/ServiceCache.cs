@@ -54,8 +54,16 @@ namespace RexToy.WebService
                         object[] args = new object[method.GetParameters().Length];
                         for (int i = 0; i < args.Length; i++)
                         {
-                            //TODO:param attribute
-                            var value = result.Captured[argInfos[i].Name];
+                            var routeParam = argInfos[i].GetSingleAttribute<RouteParamAttribute>();
+                            string value = null;
+                            if (routeParam != null)
+                            {
+                                value = result.Captured[routeParam.ArgName];
+                            }
+                            else
+                            {
+                                value = result.Captured[argInfos[i].Name];
+                            }
                             args[i] = Convert.ChangeType(value, argInfos[i].ParameterType);
                         }
                         object obj = method.Invoke(_instanceCache[method.ReflectedType], args);

@@ -1,1 +1,1 @@
-<%@ Application Inherits="WebSite.Global" %>
+<%@ Application Inherits="RexToy.WebService.Global" %>

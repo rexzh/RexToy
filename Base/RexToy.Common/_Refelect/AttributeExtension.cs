@@ -19,6 +19,12 @@ namespace RexToy
             return GetSingleOrNull<T>(attributes);
         }
 
+        public static T GetSingleAttribute<T>(this Assembly assembly) where T : Attribute
+        {
+            object[] attributes = assembly.GetCustomAttributes(typeof(T), false);
+            return GetSingleOrNull<T>(attributes);
+        }
+
         private static T GetSingleOrNull<T>(object[] attributes) where T : Attribute
         {
             switch (attributes.Length)

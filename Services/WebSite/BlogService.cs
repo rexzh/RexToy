@@ -14,7 +14,7 @@ namespace WebSite
         [Route("post/:id")]
         public string GetPost(int id)
         {
-            return "A post";
+            return string.Format("A post of id {0}", id);
         }
 
         [Route("post/:id/comments")]
@@ -22,8 +22,15 @@ namespace WebSite
         {
             List<string> comments = new List<string>();
             comments.Add("comment 1");
-            comments.Add("comment 2");            
-            return comments.ToJsonString();
+            comments.Add("comment 2");
+            var x = new { Post = id, Comments = comments };
+            return x.ToJsonString();
+        }
+
+        [Route("post/:id/comment/:commentId")]
+        public string GetComment([RouteParam("id")]int postId, int commentId)
+        {
+            return string.Format("a comment of post {0} and comment {1}", postId, commentId);
         }
     }
 }

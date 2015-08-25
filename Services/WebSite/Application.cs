@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 using RexToy.Configuration;
 using RexToy.Json;
+using RexToy.WebService;
+
+[assembly: Startup(typeof(WebSite.Application))]
 
 namespace WebSite
 {
-    public class Global : HttpApplication
+    
+    class Application : IStartup
     {
-        protected void Application_Start(object sender, EventArgs e)
+        public void Startup(HttpApplication app)
         {
             AppConfig.Load(ConfigFactory.CreateXmlConfig());
             ExtendConverter.Instance().Register(typeof(ListConverter));

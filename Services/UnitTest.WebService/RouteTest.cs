@@ -17,7 +17,7 @@ namespace UnitTest.WebService
         public void Test1()
         {
             RouteAttribute r = new RouteAttribute("/post/:postId/comment/:commentId");
-            var result = r.MatchPath("/post/10/comment/2");
+            var result = r.MatchPath("/Post/10/comment/2");
             Assert.IsTrue(result.Match);
             Assert.AreEqual("10", result.Captured["postId"]);
             Assert.AreEqual("2", result.Captured["commentId"]);
@@ -28,6 +28,14 @@ namespace UnitTest.WebService
         {
             RouteAttribute r = new RouteAttribute("/post/:postId/comment/:commentId");
             var result = r.MatchPath("/post/comment/10/2");
+            Assert.IsFalse(result.Match);
+        }
+
+        [Test]
+        public void Test3()
+        {
+            RouteAttribute r = new RouteAttribute("/post/:postId/comment/:commentId", true);
+            var result = r.MatchPath("/Post/10/Comment/2");
             Assert.IsFalse(result.Match);
         }
     }
