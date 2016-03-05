@@ -104,7 +104,7 @@ namespace RexToy.ORM.Session
                 if (pk != null)
                 {
                     string sqlId = _emit.FindIdentity<T>();
-                    _log.Debug(sql);
+                    _log.Debug(sqlId);
                     var id = _exe.ExecuteScalar(sqlId);
                     IReflector r = Reflector.Bind(entity);
                     r.SetPropertyValue(pk.PropertyName, TypeCast.ChangeToTypeOrNullableType(id, r.GetPropertyType(pk.PropertyName)));
