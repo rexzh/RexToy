@@ -22,19 +22,26 @@ namespace RexToy.WebService
         public static string GetRequestJson(this IRESTfulApi rest)
         {
             var input = HttpContext.Current.Request.InputStream;
-            MemoryStream m = new MemoryStream();
-            input.CopyTo(m);
-            m.Position = 0;
-            input.Position = 0;
-            using (var reader = new StreamReader(m))
+            using (MemoryStream m = new MemoryStream())
             {
-                return reader.ReadToEnd();
+                input.CopyTo(m);
+                m.Position = 0;
+                input.Position = 0;
+                using (var reader = new StreamReader(m))
+                {
+                    return reader.ReadToEnd();
+                }
             }
         }
 
         public static NameValueCollection GetQueryParam(this IRESTfulApi rest)
         {
             return HttpContext.Current.Request.QueryString;
+        }
+
+        public static void SetResponseCode(this IRESTfulApi rest, int code)
+        {
+            HttpContext.Current.Response.StatusCode = code;
         }
     }
 }
