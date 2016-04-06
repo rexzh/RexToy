@@ -117,13 +117,14 @@ namespace RexToy.ORM.Session
             }
         }
 
-        public void Update<T>(T entity)
+        public long Update<T>(T entity)
         {
             try
             {
                 string sql = _emit.Update(entity);
                 _log.Debug(sql);
                 _exe.ExecuteNonQuery(sql);
+                return _exe.AffectedRows;
             }
             catch (Exception ex)
             {
@@ -131,13 +132,14 @@ namespace RexToy.ORM.Session
             }
         }
 
-        public void Remove<T>(T entity)
+        public long Remove<T>(T entity)
         {
             try
             {
                 string sql = _emit.Remove(entity);
                 _log.Debug(sql);
                 _exe.ExecuteNonQuery(sql);
+                return _exe.AffectedRows;
             }
             catch (Exception ex)
             {
@@ -159,7 +161,6 @@ namespace RexToy.ORM.Session
                 throw ex.CreateWrapException<ORMException>();
             }
         }
-
         #endregion
     }
 }

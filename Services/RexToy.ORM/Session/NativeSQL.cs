@@ -31,9 +31,10 @@ namespace RexToy.ORM.Session
             return _exe.ExecuteScalar(sql);
         }
 
-        public void ExecuteNonQuery(string sql)
+        public long ExecuteNonQuery(string sql)
         {
             _exe.ExecuteNonQuery(sql);
+            return _exe.AffectedRows;
         }
 
         public DataTable ExecuteQuery(IDbCommand cmd)
@@ -46,11 +47,11 @@ namespace RexToy.ORM.Session
             return _exe.ExecuteScalar(cmd);
         }
 
-        public void ExecuteNonQuery(IDbCommand cmd)
+        public long ExecuteNonQuery(IDbCommand cmd)
         {
             _exe.ExecuteNonQuery(cmd);
+            return _exe.AffectedRows;
         }
-
         #endregion
     }
 }

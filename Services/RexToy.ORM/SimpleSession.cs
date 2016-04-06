@@ -112,16 +112,16 @@ namespace RexToy.ORM
             }
         }
 
-        public void Update<T>(T entity)
+        public long Update<T>(T entity)
         {
             CheckDisposed();
-            _mgr.Update(entity);
+            return _mgr.Update(entity);
         }
 
-        public void Remove<T>(T entity)
+        public long Remove<T>(T entity)
         {
             CheckDisposed();
-            _mgr.Remove(entity);
+            return _mgr.Remove(entity);
         }
 
         public long RemoveBy<T>(Expression<Func<T, bool>> func)
@@ -168,10 +168,10 @@ namespace RexToy.ORM
             return _native.ExecuteScalar(sql);
         }
 
-        public void ExecuteNonQuery(string sql)
+        public long ExecuteNonQuery(string sql)
         {
             CheckDisposed();
-            _native.ExecuteNonQuery(sql);
+            return _native.ExecuteNonQuery(sql);
         }
 
         public RowSet ExecuteQuery(IDbCommand cmd)
@@ -186,10 +186,10 @@ namespace RexToy.ORM
             return _native.ExecuteScalar(cmd);
         }
 
-        public void ExecuteNonQuery(IDbCommand cmd)
+        public long ExecuteNonQuery(IDbCommand cmd)
         {
             CheckDisposed();
-            _native.ExecuteNonQuery(cmd);
+            return _native.ExecuteNonQuery(cmd);
         }
 
         #endregion

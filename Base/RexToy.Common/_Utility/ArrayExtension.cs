@@ -64,7 +64,7 @@ namespace RexToy
         public static T[] Reduce<T>(this T[] arr, int index)
         {
             if (index >= arr.Length)
-                throw new ArgumentOutOfRangeException("index", "Too large.");//TODO:
+                throw new ArgumentOutOfRangeException(nameof(index), "Too large.");
 
             T[] result = new T[arr.Length - 1];
             arr.Slice<T>(0, index).CopyTo(result, 0);

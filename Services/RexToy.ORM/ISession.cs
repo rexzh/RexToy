@@ -15,14 +15,14 @@ namespace RexToy.ORM
         long QueryCount(IQuery query);
         RowSet PagedQuery(IQuery query, uint numberPerPage, uint page);
         #endregion
-
+        
         #region Same as INativeSQL
         RowSet ExecuteQuery(string sql);
         object ExecuteScalar(string sql);
-        void ExecuteNonQuery(string sql);
+        long ExecuteNonQuery(string sql);
         RowSet ExecuteQuery(IDbCommand cmd);
         object ExecuteScalar(IDbCommand cmd);
-        void ExecuteNonQuery(IDbCommand cmd);
+        long ExecuteNonQuery(IDbCommand cmd);
         #endregion
 
         IDbConnection Connection { get; }

@@ -9,10 +9,10 @@ namespace RexToy.ORM.Session
     {
         DataTable ExecuteQuery(string sql);
         object ExecuteScalar(string sql);
-        void ExecuteNonQuery(string sql);
+        long ExecuteNonQuery(string sql);
 
         DataTable ExecuteQuery(IDbCommand cmd);
         object ExecuteScalar(IDbCommand cmd);
-        void ExecuteNonQuery(IDbCommand cmd);
+        long ExecuteNonQuery(IDbCommand cmd);
     }
 }
