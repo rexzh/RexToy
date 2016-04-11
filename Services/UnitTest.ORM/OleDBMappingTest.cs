@@ -48,6 +48,13 @@ namespace UnitTest.ORM
         }
 
         [Test]
+        public void TestFindByEnum()
+        {
+            string sql = _emit.FindBy<ContactInfo>(c => c.PhoneType == SampleEntity.PhoneType.Mobile);
+            Assert.AreEqual("SELECT [ID], [PersonID], [Phone], [PhoneType] FROM [ContactInfo] WHERE [PhoneType] = 2", sql);
+        }
+
+        [Test]
         public void TestFindBySimpleNot()
         {
             string sql = _emit.FindBy<Person>(p => p.Name != "R");

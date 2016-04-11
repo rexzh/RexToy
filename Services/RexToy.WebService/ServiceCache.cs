@@ -72,7 +72,8 @@ namespace RexToy.WebService
                             return ServiceResponse.NotCorrectImplemented;
                         }
 
-                        ServiceResponse res = new ServiceResponse(200, obj as string);
+                        HttpResponse resp = app.Response;
+                        ServiceResponse res = new ServiceResponse(resp.StatusCode, obj as string);
                         return res;
                     }
                     else

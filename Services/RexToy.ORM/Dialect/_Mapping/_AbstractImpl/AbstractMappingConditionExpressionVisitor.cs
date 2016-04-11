@@ -97,6 +97,11 @@ namespace RexToy.ORM.Dialect
                     _str.Append(_tr.Not);
                     this.Visit(u.Operand);
                     break;
+
+                case ExpressionType.Convert:
+                    this.Visit(u.Operand);
+                    break;
+
                 default:
                     ParseExceptionHelper.ThrowNotSupportedExpression(u);
                     break;
