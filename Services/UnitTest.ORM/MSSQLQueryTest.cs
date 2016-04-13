@@ -172,7 +172,7 @@ namespace UnitTest.ORM
                         .OrderBy<Lifecycle>(lc => lc.Name).ThenBy<Week>(e => e.EndTime);
 
             string sql = _emit.Query(q);
-            Assert.AreEqual(string.Format("SELECT [lc].[ID] AS [lcID], [lc].[Name] AS [lcName], [lc].[StartWeekID] AS [lcStartWeekID], [lc].[EndWeekID] AS [lcEndWeekID], [s].[ID] AS [sID], [s].[StartTime] AS [sStartTime], [s].[EndTime] AS [sEndTime], [e].[ID] AS [eID], [e].[StartTime] AS [eStartTime], [e].[EndTime] AS [eEndTime] FROM ([Lifecycle] [lc] JOIN [Week] [s] ON [lc].[StartWeekID] = [s].[ID]) JOIN [Week] [e] ON [lc].[EndWeekID] = [e].[ID] WHERE [s].[StartTime] > '{0}' ORDER BY [lc].[Name] ASC, [e].[EndTime] ASC", DateTime.Parse("2000-1-1")), sql);
+            Assert.AreEqual("SELECT [lc].[ID] AS [lcID], [lc].[Name] AS [lcName], [lc].[StartWeekID] AS [lcStartWeekID], [lc].[EndWeekID] AS [lcEndWeekID], [s].[ID] AS [sID], [s].[StartTime] AS [sStartTime], [s].[EndTime] AS [sEndTime], [e].[ID] AS [eID], [e].[StartTime] AS [eStartTime], [e].[EndTime] AS [eEndTime] FROM ([Lifecycle] [lc] JOIN [Week] [s] ON [lc].[StartWeekID] = [s].[ID]) JOIN [Week] [e] ON [lc].[EndWeekID] = [e].[ID] WHERE [s].[StartTime] > CAST('2000-01-01 00:00:00' AS DateTime) ORDER BY [lc].[Name] ASC, [e].[EndTime] ASC", sql);
         }
 
         [Test]

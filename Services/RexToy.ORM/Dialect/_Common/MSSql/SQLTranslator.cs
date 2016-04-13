@@ -190,7 +190,8 @@ namespace RexToy.ORM.Dialect.MSSql
                     return ((bool)val) ? "1" : "0";
 
                 case TypeCode.DateTime:
-                    return val.ToString().Bracketing(StringPair.SingleQuote);
+                    DateTime dtVal = (DateTime)val;
+                    return string.Format("CAST('{0}' AS DateTime)", dtVal.ToString("yyyy-MM-dd HH:mm:ss"));                    
 
                 case TypeCode.String:
                 case TypeCode.Char:
