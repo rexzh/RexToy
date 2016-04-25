@@ -80,6 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\IDatabaseInfo.cs" />
+    <Compile Include="Dialect\_Mapping\IMappingOrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\MSSql\MappingOrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\OleDb\MappingOrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\_AbstractImpl\AbstractMappingOrderExpressionVisitor.cs" />
     <Compile Include="Dialect\_Model\AbstractDatabaseMeta.cs" />
     <Compile Include="Dialect\_Model\IDatabaseMeta.cs" />
     <Compile Include="Dialect\_Model\MSSql\DatabaseMeta.cs" />
@@ -124,7 +128,7 @@
     <Compile Include="Dialect\_ExpressionTreeParser\Nominator.cs" />
     <Compile Include="Dialect\_ExpressionTreeParser\SubtreeEvaluator.cs" />
     <Compile Include="Dialect\_Mapping\IMappingColumnsBuilder.cs" />
-    <Compile Include="Dialect\_Mapping\IMappingExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\IMappingConditionExpressionVisitor.cs" />
     <Compile Include="Dialect\_Model\ITypeMap.cs" />
     <Compile Include="Dialect\_Mapping\MSSql\MappingColumnsBuilder.cs" />
     <Compile Include="Dialect\_Mapping\MSSql\MappingConditionExpressionVisitor.cs" />
@@ -199,7 +203,7 @@
     <Compile Include="QueryModel\LogicType.cs" />
     <Compile Include="QueryModel\Order.cs" />
     <Compile Include="QueryModel\OrderCollection.cs" />
-    <Compile Include="QueryModel\OrderType.cs" />
+    <Compile Include="OrderType.cs" />
     <Compile Include="QueryModel\Query.cs" />
     <Compile Include="QueryModel\View.cs" />
     <Compile Include="QueryModel\ViewGeneric.cs" />

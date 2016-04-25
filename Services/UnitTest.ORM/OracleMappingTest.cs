@@ -41,6 +41,27 @@ namespace UnitTest.ORM
         }
 
         [Test]
+        public void TestFindByOrderAsc()
+        {
+            string sql = _emit.FindBy<Person>(p => p.True(), p => p.Birth);
+            Assert.AreEqual("SELECT \"ID\", \"NAME\", \"BIRTH\", \"GENDER\" FROM \"PERSON\" WHERE 1 = 1 ORDER BY \"BIRTH\" ASC", sql);
+        }
+
+        [Test]
+        public void TestFindByOrderDesc()
+        {
+            string sql = _emit.FindBy<Person>(p => p.True(), p => p.Birth, OrderType.Desc);
+            Assert.AreEqual("SELECT \"ID\", \"NAME\", \"BIRTH\", \"GENDER\" FROM \"PERSON\" WHERE 1 = 1 ORDER BY \"BIRTH\" DESC", sql);
+        }
+
+        [Test]
+        public void TestFindByOrderTop()
+        {
+            string sql = _emit.FindBy<Person>(p => p.True(), p => p.Birth, 10);
+            Assert.AreEqual("SELECT * FROM (SELECT \"ID\", \"NAME\", \"BIRTH\", \"GENDER\" FROM \"PERSON\" WHERE 1 = 1 ORDER BY \"BIRTH\" ASC) WHERE rownum <= 10", sql);
+        }
+
+        [Test]
         public void TestFindBySimple()
         {
             string sql = _emit.FindBy<Person>(p => p.Name == "R");

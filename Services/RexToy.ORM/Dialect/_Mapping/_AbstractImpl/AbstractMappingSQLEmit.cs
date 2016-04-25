@@ -13,18 +13,21 @@ namespace RexToy.ORM.Dialect
         protected IObjectMapInfoCache _cache;
         protected IMappingColumnsBuilder _cb;
         protected ISQLTranslator _tr;
-        protected IMappingConditionExpressionVisitor _v;
-        protected AbstractMappingSQLEmit(IObjectMapInfoCache cache, IMappingColumnsBuilder cb, ISQLTranslator tr, IMappingConditionExpressionVisitor v)
+        protected IMappingConditionExpressionVisitor _cv;
+        protected IMappingOrderExpressionVisitor _ov;
+        protected AbstractMappingSQLEmit(IObjectMapInfoCache cache, IMappingColumnsBuilder cb, ISQLTranslator tr, IMappingConditionExpressionVisitor cv, IMappingOrderExpressionVisitor ov)
         {
             cache.ThrowIfNullArgument(nameof(cache));
             cb.ThrowIfNullArgument(nameof(cb));
             tr.ThrowIfNullArgument(nameof(tr));
-            v.ThrowIfNullArgument(nameof(v));
+            cv.ThrowIfNullArgument(nameof(cv));
+            ov.ThrowIfNullArgument(nameof(ov));
 
             _cache = cache;
             _cb = cb;
             _tr = tr;
-            _v = v;
+            _cv = cv;
+            _ov = ov;
         }
 
         #region ISQLEmit Members
@@ -75,7 +78,49 @@ namespace RexToy.ORM.Dialect
             {
                 StringBuilder str = new StringBuilder();
                 str.Append(_tr.Select).Append(_cb.BuildSelectColumns(map)).Append(_tr.From).Append(_tr.GetEscapedTableName(map.Table.LocalName));
-                str.Append(_tr.Where).Append(_v.Translate(func.PartialEval(), map));
+                str.Append(_tr.Where).Append(_cv.Translate(func.PartialEval(), map));
+
+                return str.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex.CreateWrapException<SQLGenerateException>();
+            }
+        }
+
+        public virtual string FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, OrderType type = OrderType.Asc)
+        {
+            where.ThrowIfNullArgument(nameof(where));
+            order.ThrowIfNullArgument(nameof(order));
+            var map = _cache.GetMapInfo(typeof(T), true);
+            try
+            {
+                StringBuilder str = new StringBuilder();
+                str.Append(_tr.Select).Append(_cb.BuildSelectColumns(map)).Append(_tr.From).Append(_tr.GetEscapedTableName(map.Table.LocalName));
+                str.Append(_tr.Where).Append(_cv.Translate(where.PartialEval(), map));
+                str.Append(_tr.OrderBy).Append(_ov.Translate(order, map));
+                str.Append(type == OrderType.Asc ? _tr.Asc : _tr.Desc);
+
+                return str.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex.CreateWrapException<SQLGenerateException>();
+            }
+        }
+
+        public virtual string FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
+        {
+            where.ThrowIfNullArgument(nameof(where));
+            order.ThrowIfNullArgument(nameof(order));
+            var map = _cache.GetMapInfo(typeof(T), true);
+            try
+            {
+                StringBuilder str = new StringBuilder();
+                str.Append(_tr.Select).AppendFormat("TOP {0} ", top).Append(_cb.BuildSelectColumns(map)).Append(_tr.From).Append(_tr.GetEscapedTableName(map.Table.LocalName));
+                str.Append(_tr.Where).Append(_cv.Translate(where.PartialEval(), map));
+                str.Append(_tr.OrderBy).Append(_ov.Translate(order, map));
+                str.Append(type == OrderType.Asc ? _tr.Asc : _tr.Desc);
 
                 return str.ToString();
             }
@@ -171,7 +216,7 @@ namespace RexToy.ORM.Dialect
             {
                 StringBuilder str = new StringBuilder();
                 str.Append(_tr.Delete).Append(_tr.GetEscapedTableName(map.Table.LocalName));
-                str.Append(_tr.Where).Append(_v.Translate(func.PartialEval(), map));
+                str.Append(_tr.Where).Append(_cv.Translate(func.PartialEval(), map));
                 return str.ToString();
             }
             catch (Exception ex)

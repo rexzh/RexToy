@@ -9,7 +9,7 @@ namespace RexToy.ORM.Dialect.Oracle
     class QueryOrderVisitor : AbstractQueryOrderVisitor
     {        
         public QueryOrderVisitor(ISQLTranslator tr, IOrderExpressionVisitor oev)
-            :base(tr,oev)
+            :base(tr, oev)
         {
         }
     }

@@ -88,6 +88,18 @@ namespace RexToy.ORM
             return _mgr.FindBy<T>();
         }
 
+        public List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, OrderType type = OrderType.Asc)
+        {
+            CheckDisposed();
+            return _mgr.FindBy(where, order);
+        }
+
+        public List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
+        {
+            CheckDisposed();
+            return _mgr.FindBy(where, order, top);
+        }
+
         public T Create<T>(T entity)
         {
             CheckDisposed();

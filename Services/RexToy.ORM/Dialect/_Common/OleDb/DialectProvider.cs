@@ -13,8 +13,9 @@ namespace RexToy.ORM.Dialect.OleDb
         {
             ISQLTranslator tr = new SQLTranslator();
             IMappingColumnsBuilder cb = new MappingColumnsBuilder(tr);
-            IMappingConditionExpressionVisitor v = new MappingConditionExpressionVisitor(tr);
-            return new MappingSQLEmit(cache, cb, tr, v);
+            IMappingConditionExpressionVisitor cv = new MappingConditionExpressionVisitor(tr);
+            IMappingOrderExpressionVisitor ov = new MappingOrderExpressionVisitor(tr);
+            return new MappingSQLEmit(cache, cb, tr, cv, ov);
         }
 
         public IQuerySQLEmit CreateQuerySQLEmit(IObjectMapInfoCache cache)

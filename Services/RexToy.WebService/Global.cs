@@ -25,7 +25,7 @@ namespace RexToy.WebService
                         return;
                     }
                 }
-                catch (BadImageFormatException ex)
+                catch (BadImageFormatException)
                 {
                     //Note: Not valid .NET dll
                 }

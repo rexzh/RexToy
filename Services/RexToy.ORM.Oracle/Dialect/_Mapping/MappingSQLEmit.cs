@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 using RexToy.ORM.MappingInfo;
@@ -9,9 +10,18 @@ namespace RexToy.ORM.Dialect.Oracle
 {
     class MappingSQLEmit : AbstractMappingSQLEmit
     {
-        public MappingSQLEmit(IObjectMapInfoCache cache, IMappingColumnsBuilder cb, ISQLTranslator tr, IMappingConditionExpressionVisitor v)
-            : base(cache, cb, tr, v)
+        public MappingSQLEmit(IObjectMapInfoCache cache, IMappingColumnsBuilder cb, ISQLTranslator tr, IMappingConditionExpressionVisitor cv, IMappingOrderExpressionVisitor ov)
+            : base(cache, cb, tr, cv, ov)
         {
+        }
+
+        public override string FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
+        {
+            string inner = this.FindBy(where, order, type);
+            StringBuilder str = new StringBuilder();
+            str.Append(_tr.Select).Append("*").Append(_tr.From).AppendFormat("({0})", inner)
+                .Append(_tr.Where).AppendFormat("rownum <= {0}", top);
+            return str.ToString();
         }
 
         public override string FindIdentity<T>()

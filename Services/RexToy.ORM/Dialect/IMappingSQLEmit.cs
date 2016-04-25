@@ -11,6 +11,8 @@ namespace RexToy.ORM.Dialect
     {
         string FindByPK<T>(T pk);
         string FindBy<T>(Expression<Func<T, bool>> func);
+        string FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, OrderType type = OrderType.Asc);
+        string FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc);
         string FindBy<T>();
         string FindIdentity<T>();
 

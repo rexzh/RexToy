@@ -89,6 +89,7 @@
     <Compile Include="Dialect\SQLTranslator.cs" />
     <Compile Include="Dialect\_Mapping\MappingColumnsBuilder.cs" />
     <Compile Include="Dialect\_Mapping\MappingConditionExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Mapping\MappingOrderExpressionVisitor.cs" />
     <Compile Include="Dialect\_Mapping\MappingSQLEmit.cs" />
     <Compile Include="Dialect\_Model\DatabaseMeta.cs" />
     <Compile Include="Dialect\_Model\MetaQuery.cs" />

@@ -92,6 +92,36 @@ namespace RexToy.ORM.Session
             }
         }
 
+        public List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, OrderType type = OrderType.Asc)
+        {
+            try
+            {
+                string sql = _emit.FindBy<T>(where, order, type);
+                _log.Debug(sql);
+                DataTable dt = _exe.ExecuteQuery(sql);
+                return dt.MapToList<T>();
+            }
+            catch (Exception ex)
+            {
+                throw ex.CreateWrapException<ORMException>();
+            }
+        }
+
+        public List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
+        {
+            try
+            {
+                string sql = _emit.FindBy<T>(where, order, top, type);
+                _log.Debug(sql);
+                DataTable dt = _exe.ExecuteQuery(sql);
+                return dt.MapToList<T>();
+            }
+            catch (Exception ex)
+            {
+                throw ex.CreateWrapException<ORMException>();
+            }
+        }
+
         public T Create<T>(T entity)
         {
             try

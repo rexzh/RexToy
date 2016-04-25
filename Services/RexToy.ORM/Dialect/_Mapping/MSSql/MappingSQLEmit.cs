@@ -10,8 +10,8 @@ namespace RexToy.ORM.Dialect.MSSql
 {
     class MappingSQLEmit : AbstractMappingSQLEmit
     {
-        public MappingSQLEmit(IObjectMapInfoCache cache, IMappingColumnsBuilder cb, ISQLTranslator tr, IMappingConditionExpressionVisitor v)
-            : base(cache, cb, tr, v)
+        public MappingSQLEmit(IObjectMapInfoCache cache, IMappingColumnsBuilder cb, ISQLTranslator tr, IMappingConditionExpressionVisitor cv, IMappingOrderExpressionVisitor ov)
+            : base(cache, cb, tr, cv, ov)
         {
         }
 
