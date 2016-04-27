@@ -62,11 +62,11 @@ namespace RexToy.ORM.Session
             return default(T);
         }
 
-        public List<T> FindBy<T>(Expression<Func<T, bool>> func)
+        public List<T> FindBy<T>(Expression<Func<T, bool>> where)
         {
             try
             {
-                string sql = _emit.FindBy(func);
+                string sql = _emit.FindBy(where);
                 _log.Debug(sql);
                 DataTable dt = _exe.ExecuteQuery(sql);
                 return dt.MapToList<T>();
@@ -177,11 +177,11 @@ namespace RexToy.ORM.Session
             }
         }
 
-        public long RemoveBy<T>(Expression<Func<T, bool>> func)
+        public long RemoveBy<T>(Expression<Func<T, bool>> where)
         {
             try
             {
-                string sql = _emit.RemoveBy(func);
+                string sql = _emit.RemoveBy(where);
                 _log.Debug(sql);
                 _exe.ExecuteNonQuery(sql);
                 return _exe.AffectedRows;

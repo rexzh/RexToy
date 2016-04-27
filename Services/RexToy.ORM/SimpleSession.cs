@@ -76,10 +76,10 @@ namespace RexToy.ORM
             return _mgr.FindByPK(pk);
         }
 
-        public List<T> FindBy<T>(Expression<Func<T, bool>> func)
+        public List<T> FindBy<T>(Expression<Func<T, bool>> where)
         {
             CheckDisposed();
-            return _mgr.FindBy(func);
+            return _mgr.FindBy(where);
         }
 
         public List<T> FindBy<T>()
@@ -88,16 +88,19 @@ namespace RexToy.ORM
             return _mgr.FindBy<T>();
         }
 
-        public List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, OrderType type = OrderType.Asc)
+        public EntityResult<T> Find<T>(Expression<Func<T, bool>> where)
         {
             CheckDisposed();
-            return _mgr.FindBy(where, order);
+            EntityResult<T> r = new EntityResult<T>(_mgr);
+            r.Where(where);
+            return r;
         }
 
-        public List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
+        public EntityResult<T> Find<T>()
         {
             CheckDisposed();
-            return _mgr.FindBy(where, order, top);
+            EntityResult<T> r = new EntityResult<T>(_mgr);
+            return r;
         }
 
         public T Create<T>(T entity)
@@ -136,10 +139,10 @@ namespace RexToy.ORM
             return _mgr.Remove(entity);
         }
 
-        public long RemoveBy<T>(Expression<Func<T, bool>> func)
+        public long RemoveBy<T>(Expression<Func<T, bool>> where)
         {
             CheckDisposed();
-            return _mgr.RemoveBy(func);
+            return _mgr.RemoveBy(where);
         }
 
         #endregion

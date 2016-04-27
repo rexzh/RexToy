@@ -70,15 +70,15 @@ namespace RexToy.ORM.Dialect
             }
         }
 
-        public virtual string FindBy<T>(Expression<Func<T, bool>> func)
+        public virtual string FindBy<T>(Expression<Func<T, bool>> where)
         {
-            func.ThrowIfNullArgument(nameof(func));
+            where.ThrowIfNullArgument(nameof(where));
             var map = _cache.GetMapInfo(typeof(T), true);
             try
             {
                 StringBuilder str = new StringBuilder();
                 str.Append(_tr.Select).Append(_cb.BuildSelectColumns(map)).Append(_tr.From).Append(_tr.GetEscapedTableName(map.Table.LocalName));
-                str.Append(_tr.Where).Append(_cv.Translate(func.PartialEval(), map));
+                str.Append(_tr.Where).Append(_cv.Translate(where.PartialEval(), map));
 
                 return str.ToString();
             }
@@ -208,7 +208,7 @@ namespace RexToy.ORM.Dialect
             }
         }
 
-        public virtual string RemoveBy<T>(Expression<Func<T, bool>> func)
+        public virtual string RemoveBy<T>(Expression<Func<T, bool>> where)
         {
             var map = _cache.GetMapInfo(typeof(T), true);
 
@@ -216,7 +216,7 @@ namespace RexToy.ORM.Dialect
             {
                 StringBuilder str = new StringBuilder();
                 str.Append(_tr.Delete).Append(_tr.GetEscapedTableName(map.Table.LocalName));
-                str.Append(_tr.Where).Append(_cv.Translate(func.PartialEval(), map));
+                str.Append(_tr.Where).Append(_cv.Translate(where.PartialEval(), map));
                 return str.ToString();
             }
             catch (Exception ex)
