@@ -12,7 +12,7 @@ namespace RexToy.ORM.Session
         {
             _mgr = mgr;
         }
-        
+
         public OrderedEntityResult<T> Orderby(Expression<Func<T, object>> orderby)
         {
             orderby.ThrowIfNullArgument(nameof(orderby));
@@ -23,10 +23,6 @@ namespace RexToy.ORM.Session
         private Expression<Func<T, bool>> _where;
         internal void Where(Expression<Func<T, bool>> where)
         {
-            if (_where != null)
-            {
-                //TODO:throw
-            }
             _where = where;
         }
     }
