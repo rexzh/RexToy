@@ -29,8 +29,9 @@ namespace RexToy.ORM.Session
         public List<T> Top(int top)
         {
             if (_where == null)
-                _where = t => t.True();//TODO:Explode _mgr.FindBy
-            return _mgr.FindBy(_where, _orderby, top, _order);
+                return _mgr.FindBy(_orderby, top, _order);
+            else
+                return _mgr.FindBy(_where, _orderby, top, _order);
         }
 
         private Expression<Func<T, bool>> _where;

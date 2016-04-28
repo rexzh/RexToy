@@ -10,7 +10,7 @@ namespace RexToy.ORM.Session
         List<T> FindBy<T>(Expression<Func<T, bool>> where);
         List<T> FindBy<T>();
         
-        List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, OrderType type = OrderType.Asc);
+        List<T> FindBy<T>(Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc);
         List<T> FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc);
 
         T Create<T>(T entity);

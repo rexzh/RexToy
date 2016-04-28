@@ -88,16 +88,14 @@ namespace RexToy.ORM.Dialect
             }
         }
 
-        public virtual string FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, OrderType type = OrderType.Asc)
+        public virtual string FindBy<T>(Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
         {
-            where.ThrowIfNullArgument(nameof(where));
             order.ThrowIfNullArgument(nameof(order));
             var map = _cache.GetMapInfo(typeof(T), true);
             try
             {
                 StringBuilder str = new StringBuilder();
-                str.Append(_tr.Select).Append(_cb.BuildSelectColumns(map)).Append(_tr.From).Append(_tr.GetEscapedTableName(map.Table.LocalName));
-                str.Append(_tr.Where).Append(_cv.Translate(where.PartialEval(), map));
+                str.Append(_tr.Select).AppendFormat("TOP {0} ", top).Append(_cb.BuildSelectColumns(map)).Append(_tr.From).Append(_tr.GetEscapedTableName(map.Table.LocalName));
                 str.Append(_tr.OrderBy).Append(_ov.Translate(order, map));
                 str.Append(type == OrderType.Asc ? _tr.Asc : _tr.Desc);
 

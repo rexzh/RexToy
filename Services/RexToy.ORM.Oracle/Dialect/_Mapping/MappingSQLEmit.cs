@@ -15,9 +15,22 @@ namespace RexToy.ORM.Dialect.Oracle
         {
         }
 
+        public override string FindBy<T>(Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
+        {
+            var map = _cache.GetMapInfo(typeof(T), true);
+            StringBuilder inner = new StringBuilder(this.FindBy<T>());
+            inner.Append(_tr.OrderBy).Append(_ov.Translate(order, map)).Append(type == OrderType.Asc ? _tr.Asc : _tr.Desc);
+            StringBuilder str = new StringBuilder();
+            str.Append(_tr.Select).Append("*").Append(_tr.From).AppendFormat("({0})", inner)
+                .Append(_tr.Where).AppendFormat("rownum <= {0}", top);
+            return str.ToString();
+        }
+
         public override string FindBy<T>(Expression<Func<T, bool>> where, Expression<Func<T, object>> order, int top, OrderType type = OrderType.Asc)
         {
-            string inner = this.FindBy(where, order, type);
+            var map = _cache.GetMapInfo(typeof(T), true);
+            StringBuilder inner = new StringBuilder(this.FindBy<T>(where));
+            inner.Append(_tr.OrderBy).Append(_ov.Translate(order, map)).Append(type == OrderType.Asc ? _tr.Asc : _tr.Desc);
             StringBuilder str = new StringBuilder();
             str.Append(_tr.Select).Append("*").Append(_tr.From).AppendFormat("({0})", inner)
                 .Append(_tr.Where).AppendFormat("rownum <= {0}", top);
