@@ -219,6 +219,7 @@
     <Compile Include="Session\EntityManager.cs" />
     <Compile Include="Session\EntityQuery.cs" />
     <Compile Include="Session\EntityResult.cs" />
+    <Compile Include="Session\OrderedEntityResult.cs" />
     <Compile Include="Session\ORMExceptionHelper.cs" />
     <Compile Include="Session\IEntityManager.cs" />
     <Compile Include="Session\IEntityQuery.cs" />
