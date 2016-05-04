@@ -31,12 +31,21 @@ namespace VersionController
                             string content = reader.ReadLine();
                             if (content.StartsWith("[assembly: AssemblyVersion("))
                             {
-                                content = "[assembly: AssemblyVersion(\"" + ver + ".0.0" +"\")]";
+                                content = "[assembly: AssemblyVersion(\"" + ver + ".0.0" + "\")]";
                             }
                             if (content.StartsWith("[assembly: AssemblyFileVersion("))
                             {
                                 content = "[assembly: AssemblyFileVersion(\"" + version + "\")]";
                             }
+                            if (content.StartsWith("[assembly: AssemblyCompany("))
+                            {
+                                content = "[assembly: AssemblyCompany(\"RexStudio\")]";
+                            }
+                            if (content.StartsWith("[assembly: AssemblyCopyright("))
+                            {
+                                content = "[assembly: AssemblyCopyright(\"Copyright © RexStudio " + DateTime.Now.Year + "\")]";
+                            }
+
                             txt.AppendLine(content);
                         }
                     }
