@@ -56,5 +56,18 @@ namespace UnitTest.ORM.IntegrateDB
                 }
             }
         }
+
+        [Test]
+        public void QueryMySQL()
+        {
+            using (var db = DatabaseFactory.OpenDatabase("my"))
+            {
+                var m = db.QueryMeta();
+                foreach (var t in m.Tables)
+                {
+                    Console.WriteLine(t.DbName);
+                }
+            }
+        }
     }
 }

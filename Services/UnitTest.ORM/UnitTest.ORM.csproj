@@ -131,6 +131,10 @@
     <Compile Include="MSSQLMappingTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RexToy.ORM.MySQL\RexToy.ORM.MySQL.csproj">
+      <Project>{2f3be4d7-0f02-451d-85c8-146580b434f5}</Project>
+      <Name>RexToy.ORM.MySQL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RexToy.ORM.Oracle\RexToy.ORM.Oracle.csproj">
       <Project>{E3DE8EED-1D12-4487-834D-F01D12BBA5AB}</Project>
       <Name>RexToy.ORM.Oracle</Name>

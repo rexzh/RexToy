@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <config>
   <section name="orm">
-    <set key="database" value="source;dest;std;" />
+    <set key="database" value="source;dest;std;my" />
     <set key="object-map" value="map.xml;ora_map.xml" />
     
     <set key="source.dialectId" value="MSSql" />
@@ -13,6 +13,11 @@
     <set key="dest.dialectProvider" value="RexToy.ORM.Dialect.Oracle.DialectProvider,RexToy.ORM.Oracle" />
 
     <set key="std.dialectId" value="OleDb" />
-    <set key="std.cnnstr" value="Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=\test.mdb;Mode=Share Deny None;" />    
+    <set key="std.cnnstr" value="Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=\test.mdb;Mode=Share Deny None;" />
+
+    <set key="my.dialectId" value="MySQL" />
+    <set key="my.cnnstr" value="server=localhost;database=test;uid=root;pwd=root" />
+    <set key="my.provider" value="RexToy.ORM.DbAccess.MySQL.DbProvider,RexToy.ORM.MySQL" />
+    <set key="my.dialectProvider" value="RexToy.ORM.Dialect.MySQL.DialectProvider,RexToy.ORM.MySQL" />
   </section>
 </config>
