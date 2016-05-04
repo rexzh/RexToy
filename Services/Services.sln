@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RexToy.Core.Extension", "RexToy.Core.Extension\RexToy.Core.Extension.csproj", "{A5109D12-4740-411B-A957-3396C669FD6F}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.WebService", "UnitTest.WebService\UnitTest.WebService.csproj", "{5EA8BFDF-45BA-4E73-ABC5-432272C30886}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSite", "WebSite\WebSite.csproj", "{E5EFA4E0-5177-41C9-B8A8-3590AA7E1ECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RexToy.ORM.MySQL", "RexToy.ORM.MySQL\RexToy.ORM.MySQL.csproj", "{2F3BE4D7-0F02-451D-85C8-146580B434F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +109,14 @@ Global
 		{E5EFA4E0-5177-41C9-B8A8-3590AA7E1ECA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E5EFA4E0-5177-41C9-B8A8-3590AA7E1ECA}.Release|x86.ActiveCfg = Release|Any CPU
 		{E5EFA4E0-5177-41C9-B8A8-3590AA7E1ECA}.Release|x86.Build.0 = Release|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Debug|x86.Build.0 = Debug|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Release|x86.ActiveCfg = Release|Any CPU
+		{2F3BE4D7-0F02-451D-85C8-146580B434F5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
