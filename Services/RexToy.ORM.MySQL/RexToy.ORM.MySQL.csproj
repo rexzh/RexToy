@@ -48,6 +48,13 @@
     <Compile Include="DbAccess\DbProvider.cs" />
     <Compile Include="Dialect\DialectProvider.cs" />
     <Compile Include="Dialect\MySQLDialect.cs" />
+    <Compile Include="Dialect\SQLTranslator.cs" />
+    <Compile Include="Dialect\_Model\DatabaseMeta.cs" />
+    <Compile Include="Dialect\_Model\MetaQuery.cs" />
+    <Compile Include="Dialect\_Model\ModelColumnsBuilder.cs" />
+    <Compile Include="Dialect\_Model\ModelSQLEmit.cs" />
+    <Compile Include="Dialect\_Model\Table.cs" />
+    <Compile Include="Dialect\_Model\TypeMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -30,14 +30,10 @@ namespace RexToy.ORM.Dialect.MySQL
 
         public IModelSQLEmit CreateModelSQLEmit(IObjectMapInfoCache cache)
         {
-            //TODO:
-            /*
             ITypeMap tm = new TypeMap();
             ISQLTranslator tr = new SQLTranslator();
             IModelColumnsBuilder cb = new ModelColumnsBuilder(tr, tm);
             return new ModelSQLEmit(cache, tr, tm, cb);
-            */
-            return null;
         }
 
         public IQuerySQLEmit CreateQuerySQLEmit(IObjectMapInfoCache cache)
