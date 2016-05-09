@@ -153,7 +153,7 @@ namespace RexToy.ORM.Dialect.MySQL
 
         public string PrimaryKey
         {
-            get { return " PRIMARY KEY"; }
+            get { return "PRIMARY KEY"; }
         }
 
         public string Constraint
@@ -163,12 +163,12 @@ namespace RexToy.ORM.Dialect.MySQL
 
         public string GetEscapedTableName(string table)
         {
-            return table.ToUpper().Bracketing(SQLTranslator.Escaper);
+            return table.Bracketing(SQLTranslator.Escaper);
         }
 
         public string GetEscapedColumnName(string column)
         {
-            return column.ToUpper().Bracketing(SQLTranslator.Escaper);
+            return column.Bracketing(SQLTranslator.Escaper);
         }
 
         public string GetValueString(object val)

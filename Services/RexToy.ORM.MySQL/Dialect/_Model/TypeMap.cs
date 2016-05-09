@@ -48,6 +48,8 @@ namespace RexToy.ORM.Dialect.MySQL
                     return " tinyint ";
 
                 default:
+                    if (clrType == typeof(Guid))
+                        return " varchar(64) ";
                     GenerateExceptionHelper.ThrowUnknownMapType(clrType);
                     return string.Empty;
             }
@@ -84,12 +86,8 @@ namespace RexToy.ORM.Dialect.MySQL
                 case "real":
                     return typeof(float);
 
-                case "uniqueidentifier":
-                    return typeof(Guid);
-
                 case "date":
                 case "datetime":
-                case "datetime2":
                     return typeof(DateTime);
 
                 case "binary":

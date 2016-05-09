@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ormap xmlns:o="clr-ns://UnitTest.ORM.SampleEntity.MySQL, Assembly=UnitTest.ORM.dll"       
+       xmlns:do="db://my">
+
+  <object-table-map class="o:Person" table="do:Person" primaryKey="ID" primaryKeyGenerate="Auto">
+    <field property="ID" column="ID" />
+    <field property="Name" column="Name" nullable="false"/>
+    <field property="Birth" column="Birth" />
+    <field property="Gender" column="Gender"/>
+  </object-table-map>
+
+  <object-table-map class="o:Employee" table="do:Employee" primaryKey="ID" primaryKeyGenerate="Auto">
+    <field property="ID" column="ID" />
+    <field property="Name" column="Name" nullable="false"/>
+    <field property="Birth" column="Birth" />
+    <field property="Gender" column="Gender"/>
+    <field property="ManagerID" column="ManagerID"/>
+  </object-table-map>
+
+  <object-table-map class="o:ContactInfo" table="do:ContactInfo" primaryKey="ID" primaryKeyGenerate="Manual">
+    <field property="ID" column="ID" />
+    <field property="PersonID" column="PersonID"/>
+    <field property="Phone" column="Phone" nullable ="false" length="32" />
+    <field property="PhoneType" column="PhoneType"/>
+  </object-table-map>
+
+  <object-table-map class="o:Course" table="do:Course_Info" primaryKey="ID" primaryKeyGenerate="Manual">
+    <field property="ID" column="Course_ID" />
+    <field property="Name" column="Course_Name" length="64"/>
+    <field property="UID" column="UID" />
+  </object-table-map>
+
+  <object-table-map class="o:CoursePerson" table ="do:CoursePerson" primaryKey="ID" primaryKeyGenerate ="Auto">
+    <field property="ID" column="ID" />
+    <field property="PersonID" column="PersonID" />
+    <field property="CourseID" column="CourseID" />
+  </object-table-map>
+
+  <object-table-map class="o:Lifecycle" table ="do:Lifecycle" primaryKey="ID" primaryKeyGenerate ="Auto">
+    <field property="ID" column="ID" />
+    <field property="Name" column="Name" />
+    <field property="StartWeekID" column="StartWeekID" />
+    <field property="EndWeekID" column="EndWeekID" />
+  </object-table-map>
+
+  <object-table-map class="o:Week" table ="do:Week" primaryKey="ID" primaryKeyGenerate ="Manual">
+    <field property="ID" column="ID" />
+    <field property="StartTime" column="StartTime" />
+    <field property="EndTime" column="EndTime" />
+  </object-table-map>
+
+  <object-table-map class="o:Order" table ="do:Order" primaryKey="CustomerID;Number" primaryKeyGenerate ="Manual">
+    <field property="CustomerID" column="CustomerID" />
+    <field property="Number" column="Number" />
+    <field property="Date" column="Date" />
+  </object-table-map>
+</ormap>

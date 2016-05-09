@@ -20,6 +20,8 @@ namespace RexToy.ORM.Dialect.MySQL
             foreach (var pkInfo in _map.PrimaryKeyMaps)
             {
                 BuildColumnBasic(r, pkInfo, true);
+                if (_map.PrimaryKeyGenerate == PrimaryKeyGenerate.Auto)
+                    _str.Append(" AUTO_INCREMENT");
                 _str.Append(_tr.ColumnDelimiter);
             }
 
@@ -29,7 +31,7 @@ namespace RexToy.ORM.Dialect.MySQL
                 _str.Append(_tr.ColumnDelimiter);
             }
 
-            _str.Append(_tr.Constraint).Append(_tr.GetEscapedColumnName(PK_PREFIX + _map.Table.LocalName)).Append(_tr.PrimaryKey);
+            _str.Append(_tr.PrimaryKey);
             _str.Append(StringPair.Parenthesis.Begin);
             foreach (var pkInfo in _map.PrimaryKeyMaps)
             {

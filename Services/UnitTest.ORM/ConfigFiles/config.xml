@@ -2,7 +2,7 @@
 <config>
   <section name="orm">
     <set key="database" value="source;dest;std;my" />
-    <set key="object-map" value="map.xml;ora_map.xml" />
+    <set key="object-map" value="map.xml;ora_map.xml;mysql_map.xml" />
     
     <set key="source.dialectId" value="MSSql" />
     <set key="source.cnnstr" value="server=lcp-svr;database=Test;uid=sa;pwd=123" />
