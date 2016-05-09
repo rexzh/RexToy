@@ -12,15 +12,11 @@ namespace RexToy.ORM.Dialect.MySQL
     {
         public IMappingSQLEmit CreateMappingSQLEmit(IObjectMapInfoCache cache)
         {
-            //TODO:
-            /*
             ISQLTranslator tr = new SQLTranslator();
             IMappingColumnsBuilder cb = new MappingColumnsBuilder(tr);
             IMappingConditionExpressionVisitor cv = new MappingConditionExpressionVisitor(tr);
             IMappingOrderExpressionVisitor ov = new MappingOrderExpressionVisitor(tr);
             return new MappingSQLEmit(cache, cb, tr, cv, ov);
-            */
-            return null;
         }
 
         public IMetaQuery CreateMetaQuery(ISQLExecutor exe)
