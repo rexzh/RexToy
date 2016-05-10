@@ -82,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IntegrateDB\MetaQueryTest.cs" />
+    <Compile Include="IntegrateDB\MySQLMappingTest.cs" />
     <Compile Include="IntegrateDB\OracleMappingTest.cs" />
+    <Compile Include="MySQLQueryTest.cs" />
     <Compile Include="MySQLMappingTest.cs" />
     <Compile Include="MySQLModelTest.cs" />
     <Compile Include="OracleModelTest.cs" />

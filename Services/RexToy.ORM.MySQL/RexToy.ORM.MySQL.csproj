@@ -59,6 +59,14 @@
     <Compile Include="Dialect\_Model\ModelSQLEmit.cs" />
     <Compile Include="Dialect\_Model\Table.cs" />
     <Compile Include="Dialect\_Model\TypeMap.cs" />
+    <Compile Include="Dialect\_Query\FilterExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\JoinExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\OrderExpressionVisitor.cs" />
+    <Compile Include="Dialect\_Query\QueryColumnBuilder.cs" />
+    <Compile Include="Dialect\_Query\QueryCriteriaVisitor.cs" />
+    <Compile Include="Dialect\_Query\QueryOrderVisitor.cs" />
+    <Compile Include="Dialect\_Query\QuerySQLEmit.cs" />
+    <Compile Include="Dialect\_Query\QueryViewVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

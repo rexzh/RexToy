@@ -13,7 +13,7 @@ using UnitTest.ORM.SampleEntity.MySQL;
 namespace UnitTest.ORM
 {
     [TestFixture]
-    public class MySqlModelTest
+    public class MySQLModelTest
     {
         private IModelSQLEmit _emit;
         [SetUp]

@@ -33,9 +33,7 @@ namespace RexToy.ORM.Dialect.MySQL
         }
 
         public IQuerySQLEmit CreateQuerySQLEmit(IObjectMapInfoCache cache)
-        {
-            //TODO:
-            /*
+        {   
             ISQLTranslator tr = new SQLTranslator();
             IJoinExpressionVisitor jev = new JoinExpressionVisitor(tr, cache);
             IFilterExpressionVisitor fev = new FilterExpressionVisitor(tr, cache);
@@ -45,8 +43,6 @@ namespace RexToy.ORM.Dialect.MySQL
             IOrderExpressionVisitor oev = new OrderExpressionVisitor(tr, cache);
             IQueryOrderVisitor ov = new QueryOrderVisitor(tr, oev);
             return new QuerySQLEmit(cache, tr, vv, cb, cv, ov);
-            */
-            return null;
         }
     }
 }

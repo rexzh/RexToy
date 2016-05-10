@@ -9,7 +9,7 @@ using RexToy.ORM;
 
 using UnitTest.ORM.SampleEntity.MSSql;
 
-namespace UnitTest.ORM
+namespace UnitTest.ORM.IntegrateDB
 {
     [TestFixture, Category("IntegrateDB")]
     public class MSSQLTest
