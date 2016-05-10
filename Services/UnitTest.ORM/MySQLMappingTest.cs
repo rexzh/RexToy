@@ -86,14 +86,14 @@ namespace UnitTest.ORM
         {
             DateTime t = DateTime.Parse("2000-1-1");
             string sql = _emit.FindBy<Person>(p => p.Birth == t);
-            Assert.AreEqual("SELECT `ID`, `Name`, `Birth`, `Gender` FROM `Person` WHERE `Birth` = CAST('2000-01-01 00:00:00' AS DateTime)", sql);
+            Assert.AreEqual("SELECT `ID`, `Name`, `Birth`, `Gender` FROM `Person` WHERE `Birth` = '2000-01-01 00:00:00'", sql);
         }
 
         [Test]
         public void TestFindByComplex1()
         {
             string sql = _emit.FindBy<Person>(p => p.Birth > DateTime.Parse("2000-1-1") && p.Gender == true);
-            Assert.AreEqual("SELECT `ID`, `Name`, `Birth`, `Gender` FROM `Person` WHERE (`Birth` > CAST('2000-01-01 00:00:00' AS DateTime)) AND (`Gender` = 1)", sql);
+            Assert.AreEqual("SELECT `ID`, `Name`, `Birth`, `Gender` FROM `Person` WHERE (`Birth` > '2000-01-01 00:00:00') AND (`Gender` = 1)", sql);
         }
 
         [Test]
@@ -102,7 +102,7 @@ namespace UnitTest.ORM
             Expression<Func<Person, bool>> func = p => p.Birth > DateTime.Parse("2000-1-1");
             func = func.And(p => !(p.Gender == true));
             string sql = _emit.FindBy<Person>(func);
-            Assert.AreEqual("SELECT `ID`, `Name`, `Birth`, `Gender` FROM `Person` WHERE (`Birth` > CAST('2000-01-01 00:00:00' AS DateTime)) AND NOT (`Gender` = 1)", sql);
+            Assert.AreEqual("SELECT `ID`, `Name`, `Birth`, `Gender` FROM `Person` WHERE (`Birth` > '2000-01-01 00:00:00') AND NOT (`Gender` = 1)", sql);
         }
 
         [Test]
@@ -153,7 +153,7 @@ namespace UnitTest.ORM
         {
             Person p = new Person() { Name = "R", Birth = DateTime.Parse("2000-1-1"), Gender = false };
             string sql = _emit.Create<Person>(p);
-            Assert.AreEqual("INSERT `Person`(`Name`, `Birth`, `Gender`) VALUES('R', CAST('2000-01-01 00:00:00' AS DateTime), 0)", sql);
+            Assert.AreEqual("INSERT INTO `Person`(`Name`, `Birth`, `Gender`) VALUES('R', '2000-01-01 00:00:00', 0)", sql);
         }
 
         [Test]
@@ -183,7 +183,7 @@ namespace UnitTest.ORM
         {
             Person p = new Person() { ID = 10, Name = "R", Birth = new DateTime(2000, 1, 1), Gender = false };
             string sql = _emit.Update<Person>(p);
-            Assert.AreEqual("UPDATE `Person` SET `Name` = 'R', `Birth` = CAST('2000-01-01 00:00:00' AS DateTime), `Gender` = 0 WHERE `ID` = 10", sql);
+            Assert.AreEqual("UPDATE `Person` SET `Name` = 'R', `Birth` = '2000-01-01 00:00:00', `Gender` = 0 WHERE `ID` = 10", sql);
         }
 
         [Test, ExpectedException(typeof(SQLGenerateException))]

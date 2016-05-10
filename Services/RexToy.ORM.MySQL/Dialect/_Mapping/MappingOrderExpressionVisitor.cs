@@ -10,7 +10,6 @@ namespace RexToy.ORM.Dialect.MySQL
     {
         internal MappingOrderExpressionVisitor(ISQLTranslator tr) : base(tr)
         {
-
         }
     }
 }
