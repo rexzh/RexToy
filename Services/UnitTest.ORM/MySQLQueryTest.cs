@@ -172,7 +172,7 @@ namespace UnitTest.ORM
                         .OrderBy<Lifecycle>(lc => lc.Name).ThenBy<Week>(e => e.EndTime);
 
             string sql = _emit.Query(q);
-            Assert.AreEqual("SELECT `lc`.`ID` AS `lcID`, `lc`.`Name` AS `lcName`, `lc`.`StartWeekID` AS `lcStartWeekID`, `lc`.`EndWeekID` AS `lcEndWeekID`, `s`.`ID` AS `sID`, `s`.`StartTime` AS `sStartTime`, `s`.`EndTime` AS `sEndTime`, `e`.`ID` AS `eID`, `e`.`StartTime` AS `eStartTime`, `e`.`EndTime` AS `eEndTime` FROM (`Lifecycle` `lc` JOIN `Week` `s` ON `lc`.`StartWeekID` = `s`.`ID`) JOIN `Week` `e` ON `lc`.`EndWeekID` = `e`.`ID` WHERE `s`.`StartTime` > CAST('2000-01-01 00:00:00' AS DateTime) ORDER BY `lc`.`Name` ASC, `e`.`EndTime` ASC", sql);
+            Assert.AreEqual("SELECT `lc`.`ID` AS `lcID`, `lc`.`Name` AS `lcName`, `lc`.`StartWeekID` AS `lcStartWeekID`, `lc`.`EndWeekID` AS `lcEndWeekID`, `s`.`ID` AS `sID`, `s`.`StartTime` AS `sStartTime`, `s`.`EndTime` AS `sEndTime`, `e`.`ID` AS `eID`, `e`.`StartTime` AS `eStartTime`, `e`.`EndTime` AS `eEndTime` FROM (`Lifecycle` `lc` JOIN `Week` `s` ON `lc`.`StartWeekID` = `s`.`ID`) JOIN `Week` `e` ON `lc`.`EndWeekID` = `e`.`ID` WHERE `s`.`StartTime` > '2000-01-01 00:00:00' ORDER BY `lc`.`Name` ASC, `e`.`EndTime` ASC", sql);
         }
 
         [Test]
@@ -182,7 +182,7 @@ namespace UnitTest.ORM
                             .Where<Person>(p => p.Name.Like("R%"))
                             .OrderBy<Person>(p => p.ID);
             string sql = _emit.PagedQuery(q, 10, 1);
-            Assert.AreEqual("SELECT TOP 10 `Person`.`ID` AS `PersonID`, `Person`.`Name` AS `PersonName`, `Person`.`Birth` AS `PersonBirth`, `Person`.`Gender` AS `PersonGender`, `ContactInfo`.`ID` AS `ContactInfoID`, `ContactInfo`.`PersonID` AS `ContactInfoPersonID`, `ContactInfo`.`Phone` AS `ContactInfoPhone`, `ContactInfo`.`PhoneType` AS `ContactInfoPhoneType` FROM `Person` JOIN `ContactInfo` ON `Person`.`ID` = `ContactInfo`.`PersonID` WHERE `Person`.`ID` NOT IN (SELECT TOP 0 `Person`.`ID` FROM `Person` JOIN `ContactInfo` ON `Person`.`ID` = `ContactInfo`.`PersonID` WHERE `Person`.`Name` LIKE 'R%' ORDER BY `Person`.`ID` ASC) AND `Person`.`Name` LIKE 'R%' ORDER BY `Person`.`ID` ASC", sql);
+            Assert.AreEqual("SELECT `Person`.`ID` AS `PersonID`, `Person`.`Name` AS `PersonName`, `Person`.`Birth` AS `PersonBirth`, `Person`.`Gender` AS `PersonGender`, `ContactInfo`.`ID` AS `ContactInfoID`, `ContactInfo`.`PersonID` AS `ContactInfoPersonID`, `ContactInfo`.`Phone` AS `ContactInfoPhone`, `ContactInfo`.`PhoneType` AS `ContactInfoPhoneType` FROM `Person` JOIN `ContactInfo` ON `Person`.`ID` = `ContactInfo`.`PersonID` WHERE `Person`.`Name` LIKE 'R%' ORDER BY `Person`.`ID` ASC LIMIT 0, 10", sql);
         }
 
         [Test]
@@ -193,7 +193,7 @@ namespace UnitTest.ORM
                             .OrderBy<Person>(p => p.ID);
 
             string sql = _emit.PagedQuery(q, 10, 2);
-            Assert.AreEqual("SELECT TOP 10 `p`.`ID` AS `pID`, `p`.`Name` AS `pName`, `p`.`Birth` AS `pBirth`, `p`.`Gender` AS `pGender`, `c`.`ID` AS `cID`, `c`.`PersonID` AS `cPersonID`, `c`.`Phone` AS `cPhone`, `c`.`PhoneType` AS `cPhoneType` FROM `Person` `p` JOIN `ContactInfo` `c` ON `p`.`ID` = `c`.`PersonID` WHERE `p`.`ID` NOT IN (SELECT TOP 10 `p`.`ID` FROM `Person` `p` JOIN `ContactInfo` `c` ON `p`.`ID` = `c`.`PersonID` WHERE `p`.`Name` LIKE 'R%' ORDER BY `p`.`ID` ASC) AND `p`.`Name` LIKE 'R%' ORDER BY `p`.`ID` ASC", sql);
+            Assert.AreEqual("SELECT `p`.`ID` AS `pID`, `p`.`Name` AS `pName`, `p`.`Birth` AS `pBirth`, `p`.`Gender` AS `pGender`, `c`.`ID` AS `cID`, `c`.`PersonID` AS `cPersonID`, `c`.`Phone` AS `cPhone`, `c`.`PhoneType` AS `cPhoneType` FROM `Person` `p` JOIN `ContactInfo` `c` ON `p`.`ID` = `c`.`PersonID` WHERE `p`.`Name` LIKE 'R%' ORDER BY `p`.`ID` ASC LIMIT 10, 10", sql);
         }
 
         [Test]

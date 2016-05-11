@@ -24,7 +24,6 @@ namespace RexToy.ORM.Dialect.MySQL
 
             try
             {
-                string pagedQuery = "SELECT * FROM (SELECT row_.*, rownum rownum_ FROM ({0}) row_ WHERE rownum <= {1}) WHERE rownum_ > {2}";
                 var n1 = numberPerPage * page;
                 var n2 = numberPerPage * (page - 1);
 
@@ -39,7 +38,8 @@ namespace RexToy.ORM.Dialect.MySQL
                 }
 
                 str.Append(_tr.OrderBy).Append(_ov.BuildOrderClause(query.Order, svList));
-                return string.Format(pagedQuery, str, n1, n2);
+                str.AppendFormat(" LIMIT {0}, {1}", n2, numberPerPage);
+                return str.ToString();
             }
             catch (Exception ex)
             {
