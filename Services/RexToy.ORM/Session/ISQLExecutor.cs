@@ -8,9 +8,9 @@ namespace RexToy.ORM.Session
     {
         long AffectedRows { get; }
 
-        DataTable ExecuteQuery(string sql);
-        object ExecuteScalar(string sql);
-        void ExecuteNonQuery(string sql);
+        DataTable ExecuteQuery(string sql, int timeout = -1);
+        object ExecuteScalar(string sql, int timeout = -1);
+        void ExecuteNonQuery(string sql, int timeout = -1);
 
         DataTable ExecuteQuery(IDbCommand cmd);
         object ExecuteScalar(IDbCommand cmd);
