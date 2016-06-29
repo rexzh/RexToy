@@ -73,7 +73,7 @@ namespace RexToy.ORM.Dialect.MySQL
 
         public string Delete
         {
-            get { return "DELETE "; }
+            get { return "DELETE FROM "; }
         }
 
         public string Insert
