@@ -26,13 +26,15 @@ namespace RexToy.ORM.Session
             get { return _affectedRows; }
         }
 
-        public DataTable ExecuteQuery(string sql)
+        public DataTable ExecuteQuery(string sql, int timeout = -1)
         {
             CheckDispose();
 
             var provider = CoreFactory.CreateDbProvider(_databaseId);
             using (IDbCommand cmd = provider.CreateTextCommand(sql))
             {
+                if (timeout > 0)
+                    cmd.CommandTimeout = timeout;
                 cmd.Connection = _cnn;
                 if (_tx != null)
                     cmd.Transaction = _tx;
@@ -45,13 +47,15 @@ namespace RexToy.ORM.Session
             }
         }
 
-        public object ExecuteScalar(string sql)
+        public object ExecuteScalar(string sql, int timeout = -1)
         {
             CheckDispose();
 
             var provider = CoreFactory.CreateDbProvider(_databaseId);
             using (IDbCommand cmd = provider.CreateTextCommand(sql))
             {
+                if (timeout > 0)
+                    cmd.CommandTimeout = timeout;
                 cmd.Connection = _cnn;
                 if (_tx != null)
                     cmd.Transaction = _tx;
@@ -60,13 +64,15 @@ namespace RexToy.ORM.Session
             }
         }
 
-        public void ExecuteNonQuery(string sql)
+        public void ExecuteNonQuery(string sql, int timeout = -1)
         {
             CheckDispose();
 
             var provider = CoreFactory.CreateDbProvider(_databaseId);
             using (IDbCommand cmd = provider.CreateTextCommand(sql))
             {
+                if (timeout > 0)
+                    cmd.CommandTimeout = timeout;
                 cmd.Connection = _cnn;
                 if (_tx != null)
                     cmd.Transaction = _tx;

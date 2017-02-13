@@ -37,6 +37,22 @@ namespace RexToy.ORM.Session
             return _exe.AffectedRows;
         }
 
+        public DataTable ExecuteQuery(string sql, int timeout)
+        {
+            return _exe.ExecuteQuery(sql, timeout);
+        }
+
+        public object ExecuteScalar(string sql, int timeout)
+        {
+            return _exe.ExecuteScalar(sql, timeout);
+        }
+
+        public long ExecuteNonQuery(string sql, int timeout)
+        {
+            _exe.ExecuteNonQuery(sql, timeout);
+            return _exe.AffectedRows;
+        }
+
         public DataTable ExecuteQuery(IDbCommand cmd)
         {
             return _exe.ExecuteQuery(cmd);
