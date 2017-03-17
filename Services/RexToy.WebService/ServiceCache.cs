@@ -6,6 +6,7 @@ using System.Diagnostics;
 
 using RexToy.Collections;
 using RexToy.Configuration;
+using RexToy.Json;
 using RexToy.WebService.Configuration;
 
 namespace RexToy.WebService
@@ -67,13 +68,9 @@ namespace RexToy.WebService
                             args[i] = Convert.ChangeType(value, argInfos[i].ParameterType);
                         }
                         object obj = method.Invoke(_instanceCache[method.ReflectedType], args);
-                        if (method.ReturnType != typeof(void) && !(obj is string))
-                        {
-                            return ServiceResponse.NotCorrectImplemented;
-                        }
 
                         HttpResponse resp = app.Response;
-                        ServiceResponse res = new ServiceResponse(resp.StatusCode, obj as string);
+                        ServiceResponse res = new ServiceResponse(resp.StatusCode, (method.ReturnType == typeof(void)) ? string.Empty : obj.ToJsonString());
                         return res;
                     }
                     else

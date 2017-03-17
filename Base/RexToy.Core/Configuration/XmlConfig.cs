@@ -37,7 +37,7 @@ namespace RexToy.Configuration
             }
         }
 
-        public T? ReadValue<T>(string section, string key) where T : struct
+        public string TryReadValue(string section, string key)
         {
             section.ThrowIfNullArgument(nameof(section));
             key.ThrowIfNullArgument(nameof(key));
@@ -45,7 +45,7 @@ namespace RexToy.Configuration
             try
             {
                 string xpath = string.Format(GET_VALUE, section, key);
-                return _x.NavigateToSingle(xpath).GetValue<T>();
+                return _x.NavigateToSingleOrNull(xpath)?.GetStringValue();
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace RexToy.Configuration
             }
         }
 
-        public T? ReadEnumValue<T>(string section, string key) where T : struct
+        public T ReadValue<T>(string section, string key) where T : struct
         {
             section.ThrowIfNullArgument(nameof(section));
             key.ThrowIfNullArgument(nameof(key));
@@ -61,7 +61,55 @@ namespace RexToy.Configuration
             try
             {
                 string xpath = string.Format(GET_VALUE, section, key);
-                return _x.NavigateToSingle(xpath).GetEnumValue<T>();
+                return _x.NavigateToSingle(xpath).GetValue<T>().Value;
+            }
+            catch (Exception ex)
+            {
+                throw ExceptionHelper.CreateWrapException(ex, section, key);
+            }
+        }
+
+        public T? TryReadValue<T>(string section, string key) where T : struct
+        {
+            section.ThrowIfNullArgument(nameof(section));
+            key.ThrowIfNullArgument(nameof(key));
+
+            try
+            {
+                string xpath = string.Format(GET_VALUE, section, key);
+                return _x.NavigateToSingleOrNull(xpath)?.GetValue<T>();
+            }
+            catch (Exception ex)
+            {
+                throw ExceptionHelper.CreateWrapException(ex, section, key);
+            }
+        }
+
+        public T ReadEnumValue<T>(string section, string key) where T : struct
+        {
+            section.ThrowIfNullArgument(nameof(section));
+            key.ThrowIfNullArgument(nameof(key));
+
+            try
+            {
+                string xpath = string.Format(GET_VALUE, section, key);
+                return _x.NavigateToSingle(xpath).GetEnumValue<T>().Value;
+            }
+            catch (Exception ex)
+            {
+                throw ExceptionHelper.CreateWrapException(ex, section, key);
+            }
+        }
+
+        public T? TryReadEnumValue<T>(string section, string key) where T : struct
+        {
+            section.ThrowIfNullArgument(nameof(section));
+            key.ThrowIfNullArgument(nameof(key));
+
+            try
+            {
+                string xpath = string.Format(GET_VALUE, section, key);
+                return _x.NavigateToSingleOrNull(xpath)?.GetEnumValue<T>();
             }
             catch (Exception ex)
             {

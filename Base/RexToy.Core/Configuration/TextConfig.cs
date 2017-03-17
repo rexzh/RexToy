@@ -48,12 +48,12 @@ namespace RexToy.Configuration
             }
         }
 
-        public T? ReadValue<T>(string section, string key) where T : struct
+        public T ReadValue<T>(string section, string key) where T : struct
         {
             try
             {
                 string val = _cfg[section][key];
-                return TypeCast.ChangeToTypeOrNullableType<T>(val);
+                return TypeCast.ChangeType<T>(val);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace RexToy.Configuration
             }
         }
 
-        public T? ReadEnumValue<T>(string section, string key) where T : struct
+        public T ReadEnumValue<T>(string section, string key) where T : struct
         {
             try
             {
@@ -125,6 +125,36 @@ namespace RexToy.Configuration
             {
                 throw ExceptionHelper.CreateWrapException(ex, section);
             }
+        }
+
+        public string TryReadValue(string section, string key)
+        {
+            if (ExistsKey(section, key))
+                return _cfg[section][key];
+            else
+                return null;
+        }
+
+        public T? TryReadValue<T>(string section, string key) where T : struct
+        {
+            if (ExistsKey(section, key))
+            {
+                string val = _cfg[section][key];
+                return TypeCast.ChangeType<T>(val);
+            }                
+            else
+                return default(T);
+        }
+
+        public T? TryReadEnumValue<T>(string section, string key) where T : struct
+        {
+            if (ExistsKey(section, key))
+            {
+                string val = _cfg[section][key];
+                return EnumEx.Parse<T>(val);
+            }
+            else
+                return default(T);
         }
         #endregion
     }
