@@ -54,7 +54,7 @@ namespace RexToy.ORM.Dialect.MySQL
                     }
                 }
 
-                meta.AddColumn(tblName, colName, dbType, isPK, nullable, 0);//Extend: length
+                meta.AddColumn(tblName, colName, dbType, nullable, isPK, 0);//Extend: length
             }
 
             meta.Build();
