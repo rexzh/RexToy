@@ -28,8 +28,16 @@ namespace RexToy
             switch (segs.Length)
             {
                 case 1:
-                    _prefix = string.Empty;
-                    _localName = segs[0];
+                    if (fullName.StartsWith(delimiter))
+                    {
+                        _prefix = string.Empty;
+                        _localName = segs[0];
+                    }
+                    if (fullName.EndsWith(delimiter))
+                    {
+                        _prefix = segs[0];
+                        _localName = string.Empty;
+                    }
                     break;
 
                 case 2:
