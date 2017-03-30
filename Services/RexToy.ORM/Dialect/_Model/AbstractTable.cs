@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using RexToy;
+
 namespace RexToy.ORM.Dialect
 {
     public abstract class AbstractTable : ITable
@@ -42,13 +44,36 @@ namespace RexToy.ORM.Dialect
         protected string _clrName;
         public string CLRName
         {
-            get { return _clrName; }
+            get
+            {
+                return CamelCase(_clrName);
+            }
+        }
+
+        public string InstanceName
+        {
+            get
+            {
+                string name = CamelCase(_clrName);
+                return name.Substring(0, 1).ToLower() + name.Substring(1);
+            }
         }
 
         protected string _pk;
         public string PrimaryKey
         {
             get { return _pk; }
+        }
+
+        private string CamelCase(string name)
+        {
+            string[] segs = name.Split('_', StringSplitOptions.RemoveEmptyEntries);
+            string result = string.Empty;
+            foreach (string seg in segs)
+            {
+                result += seg.Substring(0, 1).ToUpper() + seg.Substring(1).ToLower();
+            }
+            return result;
         }
     }
 }

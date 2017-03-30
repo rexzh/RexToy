@@ -8,6 +8,7 @@ namespace RexToy.ORM.Dialect
         IEnumerable<IColumn> Columns { get; }
         string DbName { get; }
         string CLRName { get; }
+        string InstanceName { get; }
         string PrimaryKey { get; }
 
         string PKGenerate { get; }
