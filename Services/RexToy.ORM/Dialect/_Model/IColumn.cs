@@ -8,6 +8,7 @@ namespace RexToy.ORM.Dialect
         int Length { get; }
         string DbName { get; }
         string CLRName { get; }
+        string InstanceName { get; }
         bool IsPrimaryKey { get; }
         bool IsNullable { get; }
     }
