@@ -25,7 +25,19 @@ namespace RexToy.ORM.Dialect
         protected string _clrName;
         public string CLRName
         {
-            get { return _clrName; }
+            get
+            {
+                return CamelCase(_clrName);
+            }
+        }
+
+        public string InstanceName
+        {
+            get
+            {
+                string name = CamelCase(_clrName);
+                return name.Substring(0, 1).ToLower() + name.Substring(1);
+            }
         }
 
         protected string _dbType;
@@ -56,6 +68,17 @@ namespace RexToy.ORM.Dialect
         public bool IsNullable
         {
             get { return _isNullable; }
+        }
+
+        private string CamelCase(string name)
+        {
+            string[] segs = name.Split('_', StringSplitOptions.RemoveEmptyEntries);
+            string result = string.Empty;
+            foreach (string seg in segs)
+            {
+                result += seg.Substring(0, 1).ToUpper() + seg.Substring(1).ToLower();
+            }
+            return result;
         }
     }
 }
