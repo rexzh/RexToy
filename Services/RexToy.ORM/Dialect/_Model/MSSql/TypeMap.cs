@@ -81,7 +81,6 @@ namespace RexToy.ORM.Dialect.MSSql
                 case "char":
                 case "nchar":
                 case "text":
-                case "mediumtext":
                     return typeof(string);
 
                 case "float":
